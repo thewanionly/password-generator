@@ -1,11 +1,13 @@
-import { render, screen } from '@/tests/utils';
+import { composeStory, render, screen } from '@/tests/utils';
 
-import { Button } from './Button';
+import Meta, { Primary as PrimaryButtonStory } from './Button.stories';
+
+const ButtonPrimary = composeStory(PrimaryButtonStory, Meta);
 
 describe('Button', () => {
   it('renders the label', () => {
-    render(<Button label="wani" />);
+    render(<ButtonPrimary />);
 
-    expect(screen.getByRole('button', { name: 'wani' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: ButtonPrimary.args.label })).toBeInTheDocument();
   });
 });

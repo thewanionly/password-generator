@@ -28,6 +28,9 @@ const jestConfig = async () => {
       '\\.svg$': '<rootDir>/src/tests/__mocks__/svg.ts',
       // Handle absolute paths
       '^@/(.*)$': '<rootDir>/src/$1',
+      // You have to specify the complete path to preview.tsx for it ot be taken into account as a module
+      // Source: https://github.com/vercel/next.js/issues/47866#issuecomment-1607426842
+      '\\.storybook/preview': '<rootDir>/.storybook/preview.tsx',
       // Ensure all other config for moduleNameMapper provided by createJestConfig by default are still included
       ...nextJestConfig.moduleNameMapper,
     },
