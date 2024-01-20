@@ -5,7 +5,14 @@ import Meta, { Primary as PrimaryButtonStory } from './Button.stories';
 const ButtonPrimary = composeStory(PrimaryButtonStory, Meta);
 
 describe('Button', () => {
-  it('renders the label', () => {
+  it('displays a button with the passed label', () => {
+    render(<ButtonPrimary />);
+
+    expect(screen.getByRole('button', { name: ButtonPrimary.args.label })).toBeInTheDocument();
+  });
+
+  xit('displays a button with passed icon', () => {
+    // TODO:
     render(<ButtonPrimary />);
 
     expect(screen.getByRole('button', { name: ButtonPrimary.args.label })).toBeInTheDocument();
