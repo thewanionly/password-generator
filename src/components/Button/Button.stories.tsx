@@ -20,5 +20,5 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
-  render: () => <Button label="Primary" />,
+  render: () => <Button>Primary</Button>,
 };

@@ -8,13 +8,13 @@ describe('Button', () => {
   it('displays a button with the passed label', () => {
     render(<ButtonPrimary />);
 
-    expect(screen.getByRole('button', { name: ButtonPrimary.args.label })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Primary' })).toBeInTheDocument();
   });
 
   xit('displays a button with passed icon', () => {
     // TODO:
     render(<ButtonPrimary />);
 
-    expect(screen.getByRole('button', { name: ButtonPrimary.args.label })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Primary' })).toBeInTheDocument();
   });
 });
