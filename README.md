@@ -8,6 +8,9 @@ This application let's you generate a password you can use for your accounts. Bu
 2. React
 3. TypeScript
 4. Tailwind CSS
+5. Storybook
+6. Jest + React Testing Library
+7. Shadcn UI
 
 ## Running the app
 
@@ -25,3 +28,15 @@ npm run dev
 ```
 
 4. Open the local server URL ([http://localhost:3000](http://localhost:3000)) in your web browser.
+
+5. To start the test files:
+
+```bash
+npm run test:dev
+```
+
+6. To start storybook:
+
+```bash
+npm run storybook
+```
