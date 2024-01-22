@@ -22,7 +22,7 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
-  render: () => <Button>Primary</Button>,
+  render: (args) => <Button {...args}>Primary</Button>,
 };
 
 export const WithIcon: Story = {
