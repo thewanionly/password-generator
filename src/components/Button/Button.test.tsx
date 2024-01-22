@@ -1,20 +1,25 @@
-import { composeStory, render, screen } from '@/tests/utils';
+import { composeStories, render, screen, within } from '@/tests/utils';
 
-import Meta, { Primary as PrimaryButtonStory } from './Button.stories';
+import * as ButtonStories from './Button.stories';
 
-const ButtonPrimary = composeStory(PrimaryButtonStory, Meta);
+const { Primary, WithIcon } = composeStories(ButtonStories);
 
 describe('Button', () => {
   it('displays a button with the passed label', () => {
-    render(<ButtonPrimary />);
+    render(<Primary />);
 
-    expect(screen.getByRole('button', { name: 'Primary' })).toBeInTheDocument();
+    const btn = screen.getByRole('button', { name: 'Primary' });
+
+    expect(btn).toBeInTheDocument();
   });
 
-  xit('displays a button with passed icon', () => {
-    // TODO:
-    render(<ButtonPrimary />);
+  it('displays a button with icon', () => {
+    render(<WithIcon />);
 
-    expect(screen.getByRole('button', { name: 'Primary' })).toBeInTheDocument();
+    const btn = screen.getByRole('button', { name: 'Primary' });
+    const arrowRightIcon = within(btn).getByTitle('arrow right');
+
+    expect(btn).toBeInTheDocument();
+    expect(arrowRightIcon).toBeInTheDocument();
   });
 });

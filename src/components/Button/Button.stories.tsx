@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { ArrowRight } from '@/components/Icon';
+
 import { Button } from './Button';
 
 /**
@@ -21,4 +23,12 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   render: () => <Button>Primary</Button>,
+};
+
+export const WithIcon: Story = {
+  render: () => (
+    <Button className="flex items-center gap-6">
+      Primary <ArrowRight className="w-3" title="arrow right" />
+    </Button>
+  ),
 };
