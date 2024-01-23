@@ -2,11 +2,11 @@ import { composeStories, render, screen } from '@/tests/utils';
 
 import * as CheckboxStories from './Checkbox.stories';
 
-const { Default, WithLabel } = composeStories(CheckboxStories);
+const { Unchecked, WithLabeUnchecked } = composeStories(CheckboxStories);
 
 describe('Checkbox', () => {
   it('displays the checkbox', () => {
-    render(<Default />);
+    render(<Unchecked />);
 
     const checkbox = screen.getByRole('checkbox');
 
@@ -14,9 +14,9 @@ describe('Checkbox', () => {
   });
 
   it('displays the checkbox with label', () => {
-    render(<WithLabel />);
+    render(<WithLabeUnchecked />);
 
-    const checkboxWithLabel = screen.getByLabelText(WithLabel.args.label ?? '');
+    const checkboxWithLabel = screen.getByLabelText(WithLabeUnchecked.args.label ?? '');
 
     expect(checkboxWithLabel).toBeInTheDocument();
   });
