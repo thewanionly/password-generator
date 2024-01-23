@@ -23,7 +23,7 @@ export const AllIcons: Story = {
   render: () => (
     <div className="flex gap-[50px]">
       {Object.entries(Icons).map(([name, IconComponent]) => (
-        <div key={name} className="flex flex-col items-center">
+        <div key={name} className="flex flex-col items-center text-green">
           <IconComponent className="mb-3 h-8 w-8" title={name} />
           <span>{name}</span>
         </div>
