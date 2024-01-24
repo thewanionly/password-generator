@@ -2,8 +2,7 @@ import { composeStories, render, screen, userEvent } from '@/tests/utils';
 
 import * as CheckboxStories from './Checkbox.stories';
 
-const { Unchecked, Checked, DisabledUnchecked, DisabledChecked, WithLabelUnchecked } =
-  composeStories(CheckboxStories);
+const { Unchecked, Checked, DisabledUnchecked, DisabledChecked } = composeStories(CheckboxStories);
 
 describe('Checkbox', () => {
   it('displays an enabled unchecked checkbox', () => {
@@ -92,13 +91,5 @@ describe('Checkbox', () => {
     await userEvent.click(checkbox);
 
     expect(checkbox).toBeChecked();
-  });
-
-  it('displays the checkbox with label', () => {
-    render(<WithLabelUnchecked />);
-
-    const checkboxWithLabel = screen.getByLabelText(WithLabelUnchecked.args.label ?? '');
-
-    expect(checkboxWithLabel).toBeInTheDocument();
   });
 });

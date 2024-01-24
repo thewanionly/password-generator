@@ -51,19 +51,3 @@ export const DisabledUnchecked: Story = {
 export const DisabledChecked: Story = {
   render: (args) => <ControlledCheckbox {...args} defaultChecked disabled />,
 };
-
-export const WithLabelUnchecked: Story = {
-  args: {
-    label: 'Include Numbers',
-    defaultChecked: false,
-    disabled: false,
-  },
-};
-
-export const WithLabelChecked: Story = {
-  args: {
-    label: 'Include Numbers',
-    defaultChecked: true,
-    disabled: false,
-  },
-};
