@@ -1,6 +1,8 @@
+import { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Checkbox } from './Checkbox';
+import { Checkbox, CheckboxProps } from './Checkbox';
 
 /**
  * The default export defines how Storybook lists our stories in the preview
@@ -19,32 +21,35 @@ export default meta;
 
 type Story = StoryObj<typeof Checkbox>;
 
+const ControlledCheckbox = ({ defaultChecked = false, ...props }: CheckboxProps) => {
+  const [checked, setChecked] = useState(defaultChecked);
+
+  return (
+    <Checkbox
+      checked={checked}
+      onCheckedChange={(newChecked: boolean) => {
+        setChecked(newChecked);
+      }}
+      defaultChecked={defaultChecked}
+      {...props}
+    />
+  );
+};
+
 export const Unchecked: Story = {
-  args: {
-    defaultChecked: false,
-    disabled: false,
-  },
+  render: (args) => <ControlledCheckbox {...args} />,
 };
 
 export const Checked: Story = {
-  args: {
-    defaultChecked: true,
-    disabled: false,
-  },
+  render: (args) => <ControlledCheckbox {...args} defaultChecked />,
 };
 
 export const DisabledUnchecked: Story = {
-  args: {
-    defaultChecked: false,
-    disabled: true,
-  },
+  render: (args) => <ControlledCheckbox {...args} disabled />,
 };
 
 export const DisabledChecked: Story = {
-  args: {
-    defaultChecked: true,
-    disabled: true,
-  },
+  render: (args) => <ControlledCheckbox {...args} defaultChecked disabled />,
 };
 
 export const WithLabelUnchecked: Story = {
