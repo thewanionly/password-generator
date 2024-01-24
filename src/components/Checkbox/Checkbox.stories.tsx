@@ -33,7 +33,21 @@ export const Checked: Story = {
   },
 };
 
-export const WithLabeUnchecked: Story = {
+export const DisabledUnchecked: Story = {
+  args: {
+    defaultChecked: false,
+    disabled: true,
+  },
+};
+
+export const DisabledChecked: Story = {
+  args: {
+    defaultChecked: true,
+    disabled: true,
+  },
+};
+
+export const WithLabelUnchecked: Story = {
   args: {
     label: 'Include Numbers',
     defaultChecked: false,
@@ -41,7 +55,7 @@ export const WithLabeUnchecked: Story = {
   },
 };
 
-export const WithLabeChecked: Story = {
+export const WithLabelChecked: Story = {
   args: {
     label: 'Include Numbers',
     defaultChecked: true,
