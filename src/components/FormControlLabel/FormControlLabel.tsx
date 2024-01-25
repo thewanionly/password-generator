@@ -6,6 +6,8 @@ import * as LabelPrimitive from '@radix-ui/react-label';
 
 import { cn } from '@/utils/styles';
 
+import { REQUIRED_SYMBOL } from './FormControlLabel.consants';
+
 export type FormControlLabelProps = React.ComponentProps<'div'> & {
   control: React.ReactElement;
   label: string;
@@ -25,7 +27,7 @@ const FormControlLabel = React.forwardRef<HTMLDivElement, FormControlLabelProps>
           aria-required={required}
           className="text-medium font-bold leading-none text-grey-light peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
-          {label} {required && '*'}
+          {label} {required && REQUIRED_SYMBOL}
         </LabelPrimitive.Root>
       </div>
     );
