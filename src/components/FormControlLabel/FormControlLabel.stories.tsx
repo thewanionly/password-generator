@@ -25,9 +25,7 @@ export const CheckboxWithLabel: Story = {
   args: {
     id: 'checkbox-test',
     label: 'Include Numbers',
-    control: ({ id, required, disabled }) => (
-      <Checkbox id={id} required={required} disabled={disabled} />
-    ),
+    control: <Checkbox />,
   },
 };
 
@@ -36,8 +34,6 @@ export const DisabledCheckboxWithLabel: Story = {
     id: 'checkbox-test',
     label: 'Include Numbers',
     disabled: true,
-    control: ({ id, required, disabled }) => (
-      <Checkbox id={id} required={required} disabled={disabled} />
-    ),
+    control: <Checkbox />,
   },
 };
