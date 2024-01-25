@@ -21,7 +21,7 @@ export default meta;
 
 type Story = StoryObj<typeof FormControlLabel>;
 
-export const CheckboxWithLabel: Story = {
+export const UncheckedCheckboxWithLabel: Story = {
   args: {
     id: 'checkbox-test',
     label: 'Include Numbers',
@@ -29,21 +29,35 @@ export const CheckboxWithLabel: Story = {
   },
 };
 
-export const DisabledCheckboxWithLabel: Story = {
+export const CheckedCheckboxWithLabel: Story = {
   args: {
     id: 'checkbox-test',
     label: 'Include Numbers',
-    disabled: true,
-    control: <Checkbox />,
+    control: <Checkbox defaultChecked />,
   },
 };
 
-export const RquiredCheckboxWithLabel: Story = {
+export const DisabledUncheckedCheckboxWithLabel: Story = {
   args: {
     id: 'checkbox-test',
     label: 'Include Numbers',
-    disabled: false,
-    required: true,
-    control: <Checkbox />,
+    control: <Checkbox disabled />,
   },
+};
+
+export const DisabledCheckedCheckboxWithLabel: Story = {
+  args: {
+    id: 'checkbox-test',
+    label: 'Include Numbers',
+    control: <Checkbox disabled defaultChecked />,
+  },
+};
+
+export const RequiredCheckboxWithLabel: Story = {
+  args: {
+    label: 'Include Numbers',
+  },
+  render: () => (
+    <FormControlLabel control={<Checkbox id="checkbox-test" required />} label="Include Numbers" />
+  ),
 };

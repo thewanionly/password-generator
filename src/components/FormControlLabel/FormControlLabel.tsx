@@ -11,15 +11,14 @@ import { REQUIRED_SYMBOL } from './FormControlLabel.consants';
 export type FormControlLabelProps = React.ComponentProps<'div'> & {
   control: React.ReactElement;
   label: string;
-  required: boolean;
-  disabled: boolean;
+  required?: boolean;
+  disabled?: boolean;
 };
 
 const FormControlLabel = React.forwardRef<HTMLDivElement, FormControlLabelProps>(
   ({ className, id, control, label, required, disabled, ...props }, ref) => {
-    const controlId = React.useId() ?? id;
     const controlProps = {
-      id: controlId,
+      id: React.useId() ?? id ?? control.props.id,
       disabled: disabled ?? control.props.disabled,
       required: required ?? control.props.required,
     };
@@ -28,11 +27,11 @@ const FormControlLabel = React.forwardRef<HTMLDivElement, FormControlLabelProps>
       <div className={cn(`flex items-center gap-5`, className)} ref={ref} {...props}>
         {React.cloneElement(control, controlProps)}
         <LabelPrimitive.Root
-          htmlFor={controlId}
-          aria-required={required}
+          htmlFor={controlProps.id}
+          aria-required={controlProps.required}
           className="text-medium font-bold leading-none text-grey-light peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
-          {label} {required && REQUIRED_SYMBOL}
+          {label} {controlProps.required && REQUIRED_SYMBOL}
         </LabelPrimitive.Root>
       </div>
     );
