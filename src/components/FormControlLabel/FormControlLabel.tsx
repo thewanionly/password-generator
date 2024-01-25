@@ -18,10 +18,15 @@ export type FormControlLabelProps = React.ComponentProps<'div'> & {
 const FormControlLabel = React.forwardRef<HTMLDivElement, FormControlLabelProps>(
   ({ className, id, control, label, required, disabled, ...props }, ref) => {
     const controlId = React.useId() ?? id;
+    const controlProps = {
+      id: controlId,
+      disabled: disabled ?? control.props.disabled,
+      required: required ?? control.props.required,
+    };
 
     return (
       <div className={cn(`flex items-center gap-5`, className)} ref={ref} {...props}>
-        {React.cloneElement(control, { id: controlId, required, disabled })}
+        {React.cloneElement(control, controlProps)}
         <LabelPrimitive.Root
           htmlFor={controlId}
           aria-required={required}
