@@ -27,3 +27,13 @@ export const EnabledSlider: Story = {
     step: 1,
   },
 };
+
+export const DisabledSlider: Story = {
+  args: {
+    className: 'w-[60%]',
+    defaultValue: [50],
+    max: 100,
+    step: 1,
+    disabled: true,
+  },
+};

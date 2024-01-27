@@ -9,21 +9,30 @@ import { cn } from '@/utils/styles';
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, ...props }, ref) => (
+>(({ className, disabled, ...props }, ref) => (
   <SliderPrimitive.Root
     ref={ref}
-    className={cn('relative flex w-full touch-none select-none items-center', className)}
+    className={cn(
+      'relative flex w-full touch-none select-none items-center',
+      disabled && 'cursor-not-allowed',
+      className
+    )}
+    disabled={disabled}
     {...props}
   >
     <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden bg-grey-darkest">
-      <SliderPrimitive.Range className="absolute h-full bg-green" />
+      <SliderPrimitive.Range className={cn('absolute h-full bg-green', disabled && 'opacity-50')} />
     </SliderPrimitive.Track>
     <SliderPrimitive.Thumb
-      className="
-      block h-7 w-7 rounded-full border-2 border-grey-light bg-grey-light ring-offset-grey-darkest transition-colors
-      hover:border-green hover:bg-grey-darkest
-      focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-green focus-visible:ring-offset-2
-      disabled:pointer-events-none disabled:opacity-50"
+      className={cn(
+        `block h-7 w-7 rounded-full border-2 border-grey-lightest bg-grey-lightest ring-offset-grey-darkest transition-colors
+        hover:border-green hover:bg-grey-darkest
+        focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-green focus-visible:ring-offset-2
+        `,
+        !disabled
+          ? 'hover:border-green hover:bg-grey-darkest'
+          : 'pointer-events-none border-grey-light bg-grey-light '
+      )}
     />
   </SliderPrimitive.Root>
 ));
