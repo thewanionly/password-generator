@@ -29,7 +29,7 @@ const FormControlLabel = React.forwardRef<HTMLDivElement, FormControlLabelProps>
         <LabelPrimitive.Root
           htmlFor={controlProps.id}
           aria-required={controlProps.required}
-          className="text-medium font-bold leading-none text-grey-light peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          className="text-medium font-bold leading-none text-grey-lightest peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
           {label} {controlProps.required && REQUIRED_SYMBOL}
         </LabelPrimitive.Root>
