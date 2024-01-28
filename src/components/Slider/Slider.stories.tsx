@@ -22,8 +22,29 @@ type Story = StoryObj<typeof Slider>;
 export const EnabledSlider: Story = {
   args: {
     className: 'w-[60%]',
-    defaultValue: [50],
-    max: 100,
+    defaultValue: [10],
+    max: 20,
+    min: 1,
+    step: 1,
+  },
+};
+
+export const EnabledSliderMax: Story = {
+  args: {
+    className: 'w-[60%]',
+    defaultValue: [20],
+    max: 20,
+    min: 1,
+    step: 1,
+  },
+};
+
+export const EnabledSliderMin: Story = {
+  args: {
+    className: 'w-[60%]',
+    defaultValue: [1],
+    max: 20,
+    min: 1,
     step: 1,
   },
 };
@@ -31,9 +52,9 @@ export const EnabledSlider: Story = {
 export const DisabledSlider: Story = {
   args: {
     className: 'w-[60%]',
-    defaultValue: [50],
-    max: 100,
-    step: 1,
+    defaultValue: [10],
+    max: 20,
+    min: 1,
     disabled: true,
   },
 };
