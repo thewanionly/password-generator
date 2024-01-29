@@ -4,5 +4,5 @@
 
 html,
 #storybook-decorator {
-  font-family: var(--font-jetbrains-mono);
+  @apply font-jetbrains-mono;
 }
