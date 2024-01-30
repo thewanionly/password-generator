@@ -56,4 +56,7 @@ describe('Slider', () => {
     expect(slider).toBeInTheDocument();
     expect(slider).toHaveAttribute('data-disabled');
   });
+
+  // TODO: testing of interactions with the slider
+  // Currently there's no way to test/simulate how a user would interact a slider using jest and RTL.
 });
