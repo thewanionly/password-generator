@@ -17,15 +17,14 @@ type MeterProps = {
 
 type MeterBarProps = {
   position: number;
-  numOfBars: number;
+  filledBars: number;
   level: MeterBarLevel;
 };
 
-const MeterBar = ({ position, numOfBars, level }: MeterBarProps) => {
-  const { bg, border, filledBars } = MeterBarLevelMap[level];
+const MeterBar = ({ position, filledBars, level }: MeterBarProps) => {
+  const { bg, border } = MeterBarLevelMap[level];
 
-  const barsToFill = typeof filledBars === 'function' ? filledBars(numOfBars) : filledBars;
-  const isFilled = barsToFill > 0 && position <= barsToFill;
+  const isFilled = filledBars > 0 && position <= filledBars;
 
   const bgColor = isFilled ? bg : 'bg-transparent';
   const borderColor = isFilled ? border : 'border-grey-lightest';
@@ -42,7 +41,7 @@ export const Meter = forwardRef<HTMLDivElement, MeterProps>(
   ({ className = '', numOfBars = DEFAULT_NUM_OF_BARS, value, max }, ref) => {
     const classes = cn(`flex gap-2`, className);
 
-    const level = getMeterLevel(value, max);
+    const { level, filledBars } = getMeterLevel(value, max, numOfBars);
 
     return (
       <div
@@ -54,7 +53,7 @@ export const Meter = forwardRef<HTMLDivElement, MeterProps>(
         aria-valuemin={0}
       >
         {range(numOfBars).map((barIndex) => (
-          <MeterBar key={barIndex} position={barIndex + 1} numOfBars={numOfBars} level={level} />
+          <MeterBar key={barIndex} position={barIndex + 1} filledBars={filledBars} level={level} />
         ))}
       </div>
     );
