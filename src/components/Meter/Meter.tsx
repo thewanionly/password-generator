@@ -53,16 +53,16 @@ export const Meter = forwardRef<HTMLDivElement, MeterProps>(
     let barColor: MeterBarColor;
     let barsToFill = 0;
 
-    if (percentage > 0 && percentage <= 25) {
+    if (percentage > 0 && percentage <= 33) {
       barColor = MeterBarColor.RED;
-      barsToFill = Math.floor(numOfBars * 0.25);
-    } else if (percentage > 25 && percentage <= 50) {
+      barsToFill = Math.floor(numOfBars * 0.33);
+    } else if (percentage > 33 && percentage <= 66) {
       barColor = MeterBarColor.ORANGE;
-      barsToFill = Math.floor(numOfBars * 0.5);
-    } else if (percentage > 50 && percentage <= 75) {
+      barsToFill = Math.floor(numOfBars * 0.66);
+    } else if (percentage > 66 && percentage <= 99) {
       barColor = MeterBarColor.YELLOW;
-      barsToFill = Math.floor(numOfBars * 0.75);
-    } else if (percentage > 75) {
+      barsToFill = Math.floor(numOfBars * 0.99);
+    } else if (percentage === 100) {
       barColor = MeterBarColor.GREEN;
       barsToFill = numOfBars;
     }
