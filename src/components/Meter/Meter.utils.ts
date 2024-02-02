@@ -5,9 +5,8 @@ interface LevelCondition {
   level: MeterBarLevel;
 }
 
-export const getMeterLevel = (value: number, max: number, numOfBars: number) => {
+export const getMeterLevel = (value: number, max: number) => {
   const percentage = value / max;
-  const filledBars = percentage > 0 ? Math.max(Math.floor(numOfBars * percentage), 1) : 0;
 
   const levelConditions: LevelCondition[] = [
     {
@@ -27,8 +26,12 @@ export const getMeterLevel = (value: number, max: number, numOfBars: number) => 
 
   const { level = MeterBarLevel.EMPTY } = levelConditions.find(({ condition }) => condition) ?? {};
 
-  return {
-    level,
-    filledBars,
-  };
+  return level;
+};
+
+export const getMeterFilledBars = (value: number, max: number, numOfBars: number) => {
+  const percentage = value / max;
+  const filledBars = percentage > 0 ? Math.max(Math.floor(numOfBars * percentage), 1) : 0;
+
+  return filledBars;
 };

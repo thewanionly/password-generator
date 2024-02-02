@@ -9,29 +9,29 @@ export enum MeterBarLevel {
 }
 
 interface MeterBarProperties {
-  bg: string;
-  border: string;
+  bgColor: string;
+  borderColor: string;
 }
 
 export const MeterBarLevelMap: Record<MeterBarLevel, MeterBarProperties> = {
   [MeterBarLevel.EMPTY]: {
-    bg: 'bg-transparent',
-    border: 'border-grey-lightest',
+    bgColor: 'bg-transparent',
+    borderColor: 'border-grey-lightest',
   },
   [MeterBarLevel.QUARTER]: {
-    bg: 'bg-red',
-    border: 'border-red',
+    bgColor: 'bg-red',
+    borderColor: 'border-red',
   },
   [MeterBarLevel.HALF]: {
-    bg: 'bg-orange',
-    border: 'border-orange',
+    bgColor: 'bg-orange',
+    borderColor: 'border-orange',
   },
   [MeterBarLevel.THREE_QUARTERS]: {
-    bg: 'bg-yellow',
-    border: 'border-yellow',
+    bgColor: 'bg-yellow',
+    borderColor: 'border-yellow',
   },
   [MeterBarLevel.FULL]: {
-    bg: 'bg-green',
-    border: 'border-green',
+    bgColor: 'bg-green',
+    borderColor: 'border-green',
   },
 };
