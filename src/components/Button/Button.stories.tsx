@@ -21,14 +21,30 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
-  render: (args) => <Button {...args}>Primary</Button>,
+export const Enabled: Story = {
+  render: (args) => <Button {...args}>Enabled</Button>,
+};
+
+export const Disabled: Story = {
+  render: (args) => (
+    <Button disabled {...args}>
+      Disabled
+    </Button>
+  ),
 };
 
 export const WithIcon: Story = {
   render: () => (
     <Button className="flex items-center gap-6">
-      Primary <ArrowRight className="w-3" title="arrow right" />
+      Enabled <ArrowRight className="w-3" title="arrow right" />
+    </Button>
+  ),
+};
+
+export const WithIconDisabled: Story = {
+  render: () => (
+    <Button className="flex items-center gap-6" disabled>
+      Disabled <ArrowRight className="w-3" title="arrow right" />
     </Button>
   ),
 };
