@@ -11,17 +11,17 @@ export const getMeterLevel = (value: number, max: number) => {
   const levelConditions: LevelCondition[] = [
     {
       condition: percentage > 0 && percentage <= 0.33,
-      level: MeterBarLevel.QUARTER,
+      level: MeterBarLevel.LOW,
     },
     {
       condition: percentage > 0.33 && percentage <= 0.66,
-      level: MeterBarLevel.HALF,
+      level: MeterBarLevel.MODERATE,
     },
     {
       condition: percentage > 0.66 && percentage < 1,
-      level: MeterBarLevel.THREE_QUARTERS,
+      level: MeterBarLevel.MEDIUM,
     },
-    { condition: percentage >= 1, level: MeterBarLevel.FULL },
+    { condition: percentage >= 1, level: MeterBarLevel.HIGH },
   ];
 
   const { level = MeterBarLevel.EMPTY } = levelConditions.find(({ condition }) => condition) ?? {};

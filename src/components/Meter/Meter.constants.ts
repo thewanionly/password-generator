@@ -2,10 +2,10 @@ export const DEFAULT_NUM_OF_BARS = 4;
 
 export enum MeterBarLevel {
   EMPTY = 'empty',
-  QUARTER = 'quarter',
-  HALF = 'half',
-  THREE_QUARTERS = 'three_quarters',
-  FULL = 'full',
+  LOW = 'low',
+  MODERATE = 'moderate',
+  MEDIUM = 'medium',
+  HIGH = 'high',
 }
 
 interface MeterBarProperties {
@@ -18,19 +18,19 @@ export const MeterBarLevelMap: Record<MeterBarLevel, MeterBarProperties> = {
     bgColor: 'bg-transparent',
     borderColor: 'border-grey-lightest',
   },
-  [MeterBarLevel.QUARTER]: {
+  [MeterBarLevel.LOW]: {
     bgColor: 'bg-red',
     borderColor: 'border-red',
   },
-  [MeterBarLevel.HALF]: {
+  [MeterBarLevel.MODERATE]: {
     bgColor: 'bg-orange',
     borderColor: 'border-orange',
   },
-  [MeterBarLevel.THREE_QUARTERS]: {
+  [MeterBarLevel.MEDIUM]: {
     bgColor: 'bg-yellow',
     borderColor: 'border-yellow',
   },
-  [MeterBarLevel.FULL]: {
+  [MeterBarLevel.HIGH]: {
     bgColor: 'bg-green',
     borderColor: 'border-green',
   },

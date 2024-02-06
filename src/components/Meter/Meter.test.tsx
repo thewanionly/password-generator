@@ -2,7 +2,8 @@ import { composeStories, render, screen, within } from '@/tests/utils';
 
 import * as MeterStories from './Meter.stories';
 
-const { MeterEmpty, Meter25, Meter50, Meter75, MeterFull } = composeStories(MeterStories);
+const { MeterEmpty, MeterLow, MeterModerate, MeterMedium, MeterHigh } =
+  composeStories(MeterStories);
 
 describe('Meter', () => {
   it(`displays as many bars as inidcated in the "numOfBars" prop`, () => {
@@ -14,7 +15,7 @@ describe('Meter', () => {
     expect(bars).toHaveLength(MeterEmpty.args.numOfBars as number);
   });
 
-  it(`displays meter component at 0%`, () => {
+  it(`displays an empty meter component`, () => {
     render(<MeterEmpty />);
 
     const meter = screen.getByRole('meter');
@@ -24,43 +25,43 @@ describe('Meter', () => {
     expect(filledBars).toHaveLength(0);
   });
 
-  it(`displays meter component at 25%`, () => {
-    render(<Meter25 />);
+  it(`displays meter component at low level`, () => {
+    render(<MeterLow />);
 
     const meter = screen.getByRole('meter');
     const filledBars = within(meter).getAllByTestId('meter-bar-filled');
 
-    expect(meter).toHaveAttribute('aria-valuenow', String((Meter25.args.max as number) * 0.25));
-    expect(filledBars).toHaveLength(Math.floor((Meter25.args.numOfBars as number) * 0.25));
+    expect(meter).toHaveAttribute('aria-valuenow', String(MeterLow.args.value as number));
+    expect(filledBars).toHaveLength(1);
   });
 
-  it(`displays meter component at 50%`, () => {
-    render(<Meter50 />);
+  it(`displays meter component at moderate level`, () => {
+    render(<MeterModerate />);
 
     const meter = screen.getByRole('meter');
     const filledBars = within(meter).getAllByTestId('meter-bar-filled');
 
-    expect(meter).toHaveAttribute('aria-valuenow', String((Meter50.args.max as number) * 0.5));
-    expect(filledBars).toHaveLength(Math.floor((Meter50.args.numOfBars as number) * 0.5));
+    expect(meter).toHaveAttribute('aria-valuenow', String(MeterModerate.args.value as number));
+    expect(filledBars).toHaveLength(2);
   });
 
-  it(`displays meter component at 75%`, () => {
-    render(<Meter75 />);
+  it(`displays meter component at medium level`, () => {
+    render(<MeterMedium />);
 
     const meter = screen.getByRole('meter');
     const filledBars = within(meter).getAllByTestId('meter-bar-filled');
 
-    expect(meter).toHaveAttribute('aria-valuenow', String((Meter75.args.max as number) * 0.75));
-    expect(filledBars).toHaveLength(Math.floor((Meter75.args.numOfBars as number) * 0.75));
+    expect(meter).toHaveAttribute('aria-valuenow', String(MeterMedium.args.value as number));
+    expect(filledBars).toHaveLength(3);
   });
 
-  it(`displays meter component at 100%`, () => {
-    render(<MeterFull />);
+  it(`displays meter component at high level`, () => {
+    render(<MeterHigh />);
 
     const meter = screen.getByRole('meter');
     const filledBars = within(meter).getAllByTestId('meter-bar-filled');
 
-    expect(meter).toHaveAttribute('aria-valuenow', String(MeterFull.args.max));
-    expect(filledBars).toHaveLength(MeterFull.args.numOfBars as number);
+    expect(meter).toHaveAttribute('aria-valuenow', String(MeterHigh.args.max));
+    expect(filledBars).toHaveLength(MeterHigh.args.numOfBars as number);
   });
 });

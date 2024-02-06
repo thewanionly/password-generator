@@ -28,7 +28,7 @@ export const MeterEmpty: Story = {
   },
 };
 
-export const Meter25: Story = {
+export const MeterLow: Story = {
   args: {
     numOfBars: DEFAULT_NUM_OF_BARS,
     value: 3,
@@ -36,7 +36,7 @@ export const Meter25: Story = {
   },
 };
 
-export const Meter50: Story = {
+export const MeterModerate: Story = {
   args: {
     numOfBars: DEFAULT_NUM_OF_BARS,
     value: 6,
@@ -44,7 +44,7 @@ export const Meter50: Story = {
   },
 };
 
-export const Meter75: Story = {
+export const MeterMedium: Story = {
   args: {
     numOfBars: DEFAULT_NUM_OF_BARS,
     value: 9,
@@ -52,7 +52,7 @@ export const Meter75: Story = {
   },
 };
 
-export const MeterFull: Story = {
+export const MeterHigh: Story = {
   args: {
     numOfBars: DEFAULT_NUM_OF_BARS,
     value: 12,

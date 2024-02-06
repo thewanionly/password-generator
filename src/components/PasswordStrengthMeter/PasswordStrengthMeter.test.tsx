@@ -39,7 +39,7 @@ describe('PasswordStrengthMeter', () => {
 
     const meter = screen.getByRole('meter');
     const bars = within(meter).queryAllByTestId('meter-bar-filled');
-    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.QUARTER]);
+    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.LOW]);
 
     expect(meter).toHaveAttribute('aria-valuenow', String(1));
     expect(bars).toHaveLength(1);
@@ -51,7 +51,7 @@ describe('PasswordStrengthMeter', () => {
 
     const meter = screen.getByRole('meter');
     const bars = within(meter).queryAllByTestId('meter-bar-filled');
-    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.HALF]);
+    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.MODERATE]);
 
     expect(meter).toHaveAttribute('aria-valuenow', String(3));
     expect(bars).toHaveLength(2);
@@ -63,7 +63,7 @@ describe('PasswordStrengthMeter', () => {
 
     const meter = screen.getByRole('meter');
     const bars = within(meter).queryAllByTestId('meter-bar-filled');
-    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.THREE_QUARTERS]);
+    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.MEDIUM]);
 
     expect(meter).toHaveAttribute('aria-valuenow', String(4));
     expect(bars).toHaveLength(3);
@@ -75,7 +75,7 @@ describe('PasswordStrengthMeter', () => {
 
     const meter = screen.getByRole('meter');
     const bars = within(meter).queryAllByTestId('meter-bar-filled');
-    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.FULL]);
+    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.HIGH]);
 
     expect(meter).toHaveAttribute('aria-valuenow', String(5));
     expect(bars).toHaveLength(4);

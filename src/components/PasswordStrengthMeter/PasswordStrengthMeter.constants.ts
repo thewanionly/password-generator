@@ -2,10 +2,10 @@ import { MeterBarLevel } from '../Meter';
 
 export const LEVEL_TO_STRENGTH_MAP = {
   [MeterBarLevel.EMPTY]: '',
-  [MeterBarLevel.QUARTER]: 'Too Weak!',
-  [MeterBarLevel.HALF]: 'Weak',
-  [MeterBarLevel.THREE_QUARTERS]: 'Medium',
-  [MeterBarLevel.FULL]: 'Strong',
+  [MeterBarLevel.LOW]: 'Too Weak!',
+  [MeterBarLevel.MODERATE]: 'Weak',
+  [MeterBarLevel.MEDIUM]: 'Medium',
+  [MeterBarLevel.HIGH]: 'Strong',
 };
 
 export const PASSWORD_STRENGTH_FACTORS_NUM = 5;
