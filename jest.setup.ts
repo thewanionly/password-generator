@@ -10,3 +10,11 @@ setProjectAnnotations(globalStorybookConfig);
 
 // Mock ResizeObserver
 global.ResizeObserver = ResizeObserver;
+
+// Mock navigator.clipboard
+Object.defineProperty(navigator, 'clipboard', {
+  value: {
+    writeText: jest.fn(),
+  },
+  writable: true,
+});
