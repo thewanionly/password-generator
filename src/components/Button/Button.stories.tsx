@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ArrowRight } from '@/components/Icon';
+import { ArrowRight, Copy } from '@/components/Icon';
 
 import { Button } from './Button';
 
@@ -45,6 +45,14 @@ export const WithIconDisabled: Story = {
   render: () => (
     <Button className="flex items-center gap-6" disabled>
       Disabled <ArrowRight className="w-3" title="arrow right" />
+    </Button>
+  ),
+};
+
+export const Ghost: Story = {
+  render: () => (
+    <Button className="flex items-center gap-6" variant="ghost">
+      <Copy className="h-8 w-8 text-green" title="copy" />
     </Button>
   ),
 };
