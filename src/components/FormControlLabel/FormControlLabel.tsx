@@ -15,7 +15,7 @@ export type FormControlLabelProps = React.ComponentProps<'div'> & {
   disabled?: boolean;
 };
 
-const FormControlLabel = React.forwardRef<HTMLDivElement, FormControlLabelProps>(
+export const FormControlLabel = React.forwardRef<HTMLDivElement, FormControlLabelProps>(
   ({ className, id, control, label, required, disabled, ...props }, ref) => {
     const controlProps = {
       id: React.useId() ?? id ?? control.props.id,
@@ -39,5 +39,3 @@ const FormControlLabel = React.forwardRef<HTMLDivElement, FormControlLabelProps>
 );
 
 FormControlLabel.displayName = 'FormControlLabel';
-
-export { FormControlLabel };
