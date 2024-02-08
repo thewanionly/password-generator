@@ -44,7 +44,7 @@ export const CopyableText = React.forwardRef<HTMLDivElement, CopyableTextProps>(
           {value || placeholder}
         </span>
         {isCopied && <span className="mr-4 uppercase text-green">copied</span>}
-        <Button variant="ghost" onClick={handleCopy} disabled={!value}>
+        <Button variant="ghost" onClick={handleCopy} disabled={!value} aria-label="copy value">
           <Copy
             title="copy value"
             className={cn(

@@ -9,7 +9,7 @@ import { FormControlLabel } from '../FormControlLabel';
 import { ArrowRight } from '../Icon';
 // import { PasswordCharLengthSlider } from '../PasswordCharLengthSlider';
 import { PasswordStrengthMeter } from '../PasswordStrengthMeter';
-import { PASSWORD_GENERATOR } from './PasswordGenerator.constants';
+import { PASSWORD_GENERATOR, PASSWORD_RULES } from './PasswordGenerator.constants';
 
 export type PasswordGeneratorProps = {
   className?: string;
@@ -17,25 +17,6 @@ export type PasswordGeneratorProps = {
   numOfChars?: number;
   rulesList?: string[];
 };
-
-const PASSWORD_RULES = [
-  {
-    label: 'Include Uppercase Letters',
-    value: 'include_uppercase',
-  },
-  {
-    label: 'Include Lowercase Letters',
-    value: 'include_lowercase',
-  },
-  {
-    label: 'Include Numbers',
-    value: 'include_numbers',
-  },
-  {
-    label: 'Include Symbols',
-    value: 'include_symbols',
-  },
-];
 
 // states:
 // 1. numOfChars: number
@@ -56,7 +37,7 @@ export const PasswordGenerator = ({
   };
 
   return (
-    <div className={cn('bg-grey-darkest p-4 ', className)}>
+    <div className={cn('bg-grey-darkest p-4', className)}>
       <h1 className="mb-4 text-center text-grey">{PASSWORD_GENERATOR.TITLE}</h1>
       <CopyableText
         className="mb-4"
@@ -75,11 +56,11 @@ export const PasswordGenerator = ({
         ))}
         <PasswordStrengthMeter className="mb-4 mt-8" value={0} />
         <Button
-          className="flex w-full items-center justify-center gap-6"
+          className="flex w-full items-center justify-center gap-4"
           disabled={!hasAppliedRules}
           type="submit"
         >
-          Generate <ArrowRight className="w-3" title="arrow right" />
+          {PASSWORD_GENERATOR.BUTTON_LABEL} <ArrowRight className="w-3" title="arrow right" />
         </Button>
       </form>
     </div>
