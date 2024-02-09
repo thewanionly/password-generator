@@ -1,5 +1,7 @@
-import { composeStories, render, screen } from '@/tests/utils';
+import { composeStories, render, screen, within } from '@/tests/utils';
 
+import { PASSWORD_CHARACTER_LENGTH_LABEL } from '../PasswordCharLengthSlider';
+import { PASSWORD_STRENGTH_LABEL } from '../PasswordStrengthMeter';
 import { PASSWORD_GENERATOR, PASSWORD_RULES } from './PasswordGenerator.constants';
 import * as PasswordGeneratorStories from './PasswordGenerator.stories';
 
@@ -32,8 +34,37 @@ describe('PasswordGenerator', () => {
       expect(copyBtnIcon).toBeDisabled();
     });
 
+    it('displays password character length label', () => {
+      render(<Empty />);
+
+      const label = screen.getByText(PASSWORD_CHARACTER_LENGTH_LABEL);
+
+      expect(label).toBeInTheDocument();
+    });
+
+    it('displays password character length value as "0"', () => {
+      render(<Empty />);
+
+      const emptyValue = screen.getByText('0');
+
+      expect(emptyValue).toBeInTheDocument();
+    });
+
+    it('displays the password character length slider at min value', () => {
+      render(<Empty />);
+
+      const slider = screen.getByRole('slider');
+
+      expect(slider).toBeInTheDocument();
+      expect(slider).toBeEnabled();
+
+      // Use toHaveAttribute for now since aria-valuenow is not being checked in toHaveValue
+      // Reference: https://github.com/testing-library/jest-dom/issues/478
+      expect(slider).toHaveAttribute('aria-valuenow', '0');
+    });
+
     it.each(PASSWORD_RULES.map(({ label }) => ({ label })))(
-      `displays unchecked "$label" checkbox`,
+      `displays an unchecked "$label" checkbox`,
       ({ label }) => {
         render(<Empty />);
 
@@ -43,6 +74,23 @@ describe('PasswordGenerator', () => {
         expect(checkbox).not.toBeChecked();
       }
     );
+
+    it('displays password strength label', () => {
+      render(<Empty />);
+
+      const strengthLabel = screen.getByText(PASSWORD_STRENGTH_LABEL);
+
+      expect(strengthLabel).toBeInTheDocument();
+    });
+
+    it(`displays 4 empty meter bars`, () => {
+      render(<Empty />);
+
+      const meter = screen.getByRole('meter');
+      const bars = within(meter).getAllByTestId('meter-bar');
+
+      expect(bars).toHaveLength(4);
+    });
 
     it('displays a disabled generate button by default', () => {
       render(<Empty />);

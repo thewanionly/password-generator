@@ -1,6 +1,9 @@
 import { Slider } from '@/components/Slider';
 
-import { CHARACTER_LENGTH_LABEL, MAX_PASSWORD_LENGTH } from './PasswordCharLengthSlider.constants';
+import {
+  PASSWORD_CHARACTER_LENGTH_LABEL,
+  MAX_PASSWORD_LENGTH,
+} from './PasswordCharLengthSlider.constants';
 
 export type PasswordCharLengthSliderProps = {
   className?: string;
@@ -20,7 +23,7 @@ export const PasswordCharLengthSlider = ({
   return (
     <div className={className}>
       <div className="mb-[18px] flex items-center justify-between">
-        <span className="text-grey-lightest">{CHARACTER_LENGTH_LABEL}</span>
+        <span className="text-grey-lightest">{PASSWORD_CHARACTER_LENGTH_LABEL}</span>
         <span className="text-2xl text-green">{value}</span>
       </div>
       <Slider

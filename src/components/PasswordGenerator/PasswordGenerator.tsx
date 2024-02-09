@@ -7,6 +7,7 @@ import { Checkbox } from '../Checkbox';
 import { CopyableText } from '../CopyableText';
 import { FormControlLabel } from '../FormControlLabel';
 import { ArrowRight } from '../Icon';
+import { PasswordCharLengthSlider } from '../PasswordCharLengthSlider';
 // import { PasswordCharLengthSlider } from '../PasswordCharLengthSlider';
 import { PasswordStrengthMeter } from '../PasswordStrengthMeter';
 import { PASSWORD_GENERATOR, PASSWORD_RULES } from './PasswordGenerator.constants';
@@ -45,7 +46,7 @@ export const PasswordGenerator = ({
         value={password}
       />
       <form className="bg-grey-dark p-4" onSubmit={handleSubmit}>
-        {/* <PasswordCharLengthSlider className="mb-11" value={numOfChars} /> */}
+        <PasswordCharLengthSlider className="mb-11" value={numOfChars} onChange={() => {}} />
         {PASSWORD_RULES.map(({ label, value }) => (
           <FormControlLabel
             key={value}

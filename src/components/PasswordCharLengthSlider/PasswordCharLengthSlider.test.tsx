@@ -1,6 +1,6 @@
 import { composeStories, render, screen } from '@/tests/utils';
 
-import { CHARACTER_LENGTH_LABEL } from './PasswordCharLengthSlider.constants';
+import { PASSWORD_CHARACTER_LENGTH_LABEL } from './PasswordCharLengthSlider.constants';
 import * as PasswordCharLengthSliderStories from './PasswordCharLengthSlider.stories';
 
 const { WithValue } = composeStories(PasswordCharLengthSliderStories);
@@ -9,7 +9,7 @@ describe('PasswordCharLengthSlider', () => {
   it('displays "Character Length" label', () => {
     render(<WithValue />);
 
-    const label = screen.getByText(CHARACTER_LENGTH_LABEL);
+    const label = screen.getByText(PASSWORD_CHARACTER_LENGTH_LABEL);
 
     expect(label).toBeInTheDocument();
   });
