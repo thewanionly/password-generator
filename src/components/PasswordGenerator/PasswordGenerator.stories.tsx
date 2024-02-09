@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { PasswordGenerator, PasswordGeneratorProps } from './PasswordGenerator';
+import { PasswordGenerator } from './PasswordGenerator';
+import { PASSWORD_RULES } from './PasswordGenerator.constants';
 
 /**
  * The default export defines how Storybook lists our stories in the preview
@@ -19,10 +20,16 @@ export default meta;
 
 type Story = StoryObj<typeof PasswordGenerator>;
 
-const ControlledPasswordGenerator = (props: PasswordGeneratorProps) => {
-  return <PasswordGenerator className="min-w-[375px] max-w-[566px]" {...props} />;
-};
+const commonArgs = { className: ' min-w-[375px] max-w-[566px] ' };
 
 export const Empty: Story = {
-  render: (args) => <ControlledPasswordGenerator {...args} />,
+  args: { ...commonArgs },
+};
+
+export const TooWeak: Story = {
+  args: {
+    ...commonArgs,
+    initialCharLength: 1,
+    initialAppliedRules: new Set([PASSWORD_RULES[0].value]),
+  },
 };

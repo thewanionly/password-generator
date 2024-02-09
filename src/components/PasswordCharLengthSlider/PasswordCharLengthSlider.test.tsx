@@ -34,4 +34,7 @@ describe('PasswordCharLengthSlider', () => {
     // Reference: https://github.com/testing-library/jest-dom/issues/478
     expect(slider).toHaveAttribute('aria-valuenow', (WithValue.args.value as number).toString());
   });
+
+  // TODO: testing of interactions with the slider
+  // Currently there's no way to test/simulate how a user would interact a slider using jest and RTL.
 });

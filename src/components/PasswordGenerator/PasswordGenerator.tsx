@@ -1,35 +1,48 @@
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 
+import { Button } from '@/components/Button';
+import { Checkbox } from '@/components/Checkbox';
+import { CopyableText } from '@/components/CopyableText';
+import { FormControlLabel } from '@/components/FormControlLabel';
+import { ArrowRight } from '@/components/Icon';
+import { PasswordCharLengthSlider } from '@/components/PasswordCharLengthSlider';
+import { PasswordStrengthMeter } from '@/components/PasswordStrengthMeter';
 import { cn } from '@/utils/styles';
 
-import { Button } from '../Button';
-import { Checkbox } from '../Checkbox';
-import { CopyableText } from '../CopyableText';
-import { FormControlLabel } from '../FormControlLabel';
-import { ArrowRight } from '../Icon';
-import { PasswordCharLengthSlider } from '../PasswordCharLengthSlider';
-// import { PasswordCharLengthSlider } from '../PasswordCharLengthSlider';
-import { PasswordStrengthMeter } from '../PasswordStrengthMeter';
 import { PASSWORD_GENERATOR, PASSWORD_RULES } from './PasswordGenerator.constants';
 
 export type PasswordGeneratorProps = {
   className?: string;
-  password: string;
-  numOfChars?: number;
-  rulesList?: string[];
+  initialCharLength?: number;
+  initialAppliedRules?: Set<string>;
 };
 
 // states:
-// 1. numOfChars: number
-// 2. appliedRules: string[]
+// 1. charLength: number
+// 2. appliedRules: Set<string>
 // 3. passwordText: string
 export const PasswordGenerator = ({
   className = '',
-  password,
-  numOfChars = 0,
-  rulesList = [],
+  initialCharLength = 0,
+  initialAppliedRules = new Set<string>(),
 }: PasswordGeneratorProps) => {
-  const hasAppliedRules = numOfChars > 0 && rulesList.length > 0;
+  const password = '';
+  const [charLength, setCharLength] = useState(initialCharLength);
+  const [appliedRules, setAppliedRules] = useState<Set<string>>(initialAppliedRules);
+
+  const hasAppliedRules = charLength > 0 && appliedRules.size > 0;
+
+  const handleCheckedChange = (value: string) => (checked: boolean) => {
+    const newAppliedRules = new Set([...appliedRules]);
+
+    if (checked) {
+      newAppliedRules.add(value);
+    } else {
+      newAppliedRules.delete(value);
+    }
+
+    setAppliedRules(newAppliedRules);
+  };
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -46,12 +59,18 @@ export const PasswordGenerator = ({
         value={password}
       />
       <form className="bg-grey-dark p-4" onSubmit={handleSubmit}>
-        <PasswordCharLengthSlider className="mb-11" value={numOfChars} onChange={() => {}} />
+        <PasswordCharLengthSlider className="mb-11" value={charLength} onChange={setCharLength} />
         {PASSWORD_RULES.map(({ label, value }) => (
           <FormControlLabel
             key={value}
             className="mb-4"
-            control={<Checkbox id={value} checked={rulesList.includes(value)} />}
+            control={
+              <Checkbox
+                id={value}
+                checked={appliedRules.has(value)}
+                onCheckedChange={handleCheckedChange(value)}
+              />
+            }
             label={label}
           />
         ))}

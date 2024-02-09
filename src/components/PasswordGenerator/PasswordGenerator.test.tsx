@@ -5,7 +5,7 @@ import { PASSWORD_STRENGTH_LABEL } from '../PasswordStrengthMeter';
 import { PASSWORD_GENERATOR, PASSWORD_RULES } from './PasswordGenerator.constants';
 import * as PasswordGeneratorStories from './PasswordGenerator.stories';
 
-const { Empty } = composeStories(PasswordGeneratorStories);
+const { Empty, TooWeak } = composeStories(PasswordGeneratorStories);
 
 describe('PasswordGenerator', () => {
   describe('Layout', () => {
@@ -100,5 +100,19 @@ describe('PasswordGenerator', () => {
       expect(generateBtn).toBeInTheDocument();
       expect(generateBtn).toBeDisabled();
     });
+  });
+
+  describe('Interaction', () => {
+    it('enables the generate button when character length is greather than 0 and at least one rule checkbox is ticked', () => {
+      render(<TooWeak />);
+
+      const generateBtn = screen.getByRole('button', { name: PASSWORD_GENERATOR.BUTTON_LABEL });
+
+      expect(generateBtn).toBeInTheDocument();
+      expect(generateBtn).toBeEnabled();
+    });
+
+    // TODO: testing of interactions with the slider
+    // Currently there's no way to test/simulate how a user would interact a slider using jest and RTL.
   });
 });
