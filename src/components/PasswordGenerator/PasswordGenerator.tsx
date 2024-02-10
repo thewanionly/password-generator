@@ -7,6 +7,7 @@ import { FormControlLabel } from '@/components/FormControlLabel';
 import { ArrowRight } from '@/components/Icon';
 import { PasswordCharLengthSlider } from '@/components/PasswordCharLengthSlider';
 import { PasswordStrengthMeter } from '@/components/PasswordStrengthMeter';
+import { generatePassword } from '@/utils/password';
 import { cn } from '@/utils/styles';
 
 import { PASSWORD_GENERATOR, PASSWORD_RULES } from './PasswordGenerator.constants';
@@ -17,16 +18,12 @@ export type PasswordGeneratorProps = {
   initialAppliedRules?: Set<string>;
 };
 
-// states:
-// 1. charLength: number
-// 2. appliedRules: Set<string>
-// 3. passwordText: string
 export const PasswordGenerator = ({
   className = '',
   initialCharLength = 0,
   initialAppliedRules = new Set<string>(),
 }: PasswordGeneratorProps) => {
-  const password = '';
+  const [password, setPassword] = useState('');
   const [charLength, setCharLength] = useState(initialCharLength);
   const [appliedRules, setAppliedRules] = useState<Set<string>>(initialAppliedRules);
 
@@ -47,7 +44,14 @@ export const PasswordGenerator = ({
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    // TODO: call onSubmit maybe
+    const generatedPassword = generatePassword(charLength, {
+      withUpperCase: appliedRules.has(PASSWORD_RULES[0].value),
+      withLowerCase: appliedRules.has(PASSWORD_RULES[1].value),
+      withNumbers: appliedRules.has(PASSWORD_RULES[2].value),
+      withSymbols: appliedRules.has(PASSWORD_RULES[3].value),
+    });
+
+    setPassword(generatedPassword);
   };
 
   return (

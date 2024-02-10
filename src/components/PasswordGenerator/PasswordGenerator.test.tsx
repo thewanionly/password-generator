@@ -1,4 +1,4 @@
-import { composeStories, render, screen, within } from '@/tests/utils';
+import { composeStories, render, screen, userEvent, within } from '@/tests/utils';
 
 import { PASSWORD_CHARACTER_LENGTH_LABEL } from '../PasswordCharLengthSlider';
 import { PASSWORD_STRENGTH_LABEL } from '../PasswordStrengthMeter';
@@ -100,9 +100,7 @@ describe('PasswordGenerator', () => {
       expect(generateBtn).toBeInTheDocument();
       expect(generateBtn).toBeDisabled();
     });
-  });
 
-  describe('Interaction', () => {
     it('enables the generate button when character length is greather than 0 and at least one rule checkbox is ticked', () => {
       render(<TooWeak />);
 
@@ -111,8 +109,21 @@ describe('PasswordGenerator', () => {
       expect(generateBtn).toBeInTheDocument();
       expect(generateBtn).toBeEnabled();
     });
+  });
 
-    // TODO: testing of interactions with the slider
-    // Currently there's no way to test/simulate how a user would interact a slider using jest and RTL.
+  describe('Interaction', () => {
+    it('updates the copyable text with value and hides the placeholder after clicking generate password', async () => {
+      render(<TooWeak />);
+
+      const generateBtn = screen.getByRole('button', { name: PASSWORD_GENERATOR.BUTTON_LABEL });
+
+      await userEvent.click(generateBtn);
+
+      const placeHolder = screen.queryByText(PASSWORD_GENERATOR.COPYABLE_TEXT_PLACEHOLDER);
+      const value = screen.getByTestId('copyable-text-value');
+
+      expect(placeHolder).not.toBeInTheDocument();
+      expect(value).toBeInTheDocument();
+    });
   });
 });

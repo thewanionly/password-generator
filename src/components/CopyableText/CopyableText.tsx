@@ -40,7 +40,10 @@ export const CopyableText = React.forwardRef<HTMLDivElement, CopyableTextProps>(
           className
         )}
       >
-        <span className={cn('mr-3 flex-1 text-2xl text-grey-lightest', !value && 'opacity-25')}>
+        <span
+          className={cn('mr-3 flex-1 text-2xl text-grey-lightest', !value && 'opacity-25')}
+          data-testid={value && 'copyable-text-value'}
+        >
           {value || placeholder}
         </span>
         {isCopied && <span className="mr-4 uppercase text-green">copied</span>}
