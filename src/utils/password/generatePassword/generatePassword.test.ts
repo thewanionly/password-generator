@@ -1,5 +1,9 @@
 import { generatePassword } from './generatePassword';
-import { DEFAULT_PASSWORD_LENGTH, PASSWORD_REGEX } from './generatePassword.constants';
+import {
+  DEFAULT_PASSWORD_LENGTH,
+  INVALID_INPUT_ERROR_MESSAGES,
+  PASSWORD_REGEX,
+} from './generatePassword.constants';
 
 describe('generatePassword', () => {
   describe('no arguments passed', () => {
@@ -12,11 +16,20 @@ describe('generatePassword', () => {
   });
 
   describe('invalid inputs', () => {
-    xit('throws an error when length is 0', () => {});
+    it('throws an error when length is 0', () => {
+      expect(() => generatePassword(0)).toThrow(INVALID_INPUT_ERROR_MESSAGES.LENGTH);
+    });
 
-    xit('throws an error when length is greater than 0 but all options are false', () => {});
-
-    xit('throws an error when all options are false', () => {});
+    it('throws an error when all options are false', () => {
+      expect(() =>
+        generatePassword(12, {
+          withUpperCase: false,
+          withLowerCase: false,
+          withNumbers: false,
+          withSymbols: false,
+        })
+      ).toThrow(INVALID_INPUT_ERROR_MESSAGES.OPTIONS);
+    });
   });
 
   describe('length specified, no options passed', () => {

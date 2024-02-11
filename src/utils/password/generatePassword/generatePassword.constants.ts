@@ -13,3 +13,8 @@ export const CHARACTERS = {
   NUMBERS: '0123456789',
   SYMBOLS: '!@#$%^&*()_+\\-=[]{};\'":\\\\|,.<>/?~',
 };
+
+export const INVALID_INPUT_ERROR_MESSAGES = {
+  LENGTH: '`length` parameter must be greater than 0',
+  OPTIONS: 'At least one option must be enabled',
+};

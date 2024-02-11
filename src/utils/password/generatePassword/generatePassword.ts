@@ -1,4 +1,8 @@
-import { DEFAULT_PASSWORD_LENGTH, CHARACTERS } from './generatePassword.constants';
+import {
+  DEFAULT_PASSWORD_LENGTH,
+  CHARACTERS,
+  INVALID_INPUT_ERROR_MESSAGES,
+} from './generatePassword.constants';
 
 type PasswordOptions = {
   withUpperCase: boolean;
@@ -16,6 +20,13 @@ export const generatePassword = (
     withSymbols: true,
   }
 ): string => {
+  // throw an error when length is zero and below
+  if (length <= 0) throw new Error(INVALID_INPUT_ERROR_MESSAGES.LENGTH);
+
+  // throw an error when all options are false
+  if (Object.values(options).every((option) => !option))
+    throw new Error(INVALID_INPUT_ERROR_MESSAGES.OPTIONS);
+
   let password = '',
     includedChars = '';
 
