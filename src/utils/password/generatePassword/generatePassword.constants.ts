@@ -1,10 +1,20 @@
 export const DEFAULT_PASSWORD_LENGTH = 12;
 export const PASSWORD_REGEX = {
-  UPPERCASE_LETTERS: /[A-Z]/,
-  LOWERCASE_LETTERS: /[a-z]/,
-  NUMBERS: /\d/,
-  SYMBOLS: /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/,
-  ALL: /[a-zA-Z\d[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/,
+  UPPERCASE_LETTERS: /^[A-Z]+$/,
+  LOWERCASE_LETTERS: /^[a-z]+$/,
+  NUMBERS: /^\d+$/,
+  SYMBOLS: /^[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+$/,
+  NUM_SYM: /^[\d[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+$/,
+  LCASE_SYM: /^[a-z[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+$/,
+  LCASE_NUM: /^[a-z\d]+$/,
+  LCASE_NUM_SYM: /^[a-z\d[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+$/,
+  UCASE_SYM: /^[A-Z[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+$/,
+  UCASE_NUM: /^[A-Z\d]+$/,
+  UCASE_NUM_SYM: /^[A-Z\d[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+$/,
+  UCASE_LCASE: /^[a-zA-Z]+$/,
+  UCASE_LCASE_SYM: /^[a-zA-Z[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+$/,
+  UCASE_LCASE_NUM: /^[a-zA-Z\d]+$/,
+  ALL: /^[a-zA-Z\d[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+$/,
 };
 
 export const CHARACTERS = {

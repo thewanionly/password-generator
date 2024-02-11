@@ -3,13 +3,7 @@ import {
   CHARACTERS,
   INVALID_INPUT_ERROR_MESSAGES,
 } from './generatePassword.constants';
-
-type PasswordOptions = {
-  withUpperCase: boolean;
-  withLowerCase: boolean;
-  withNumbers: boolean;
-  withSymbols: boolean;
-};
+import { PasswordOptions } from './generatePassword.types';
 
 export const generatePassword = (
   length = DEFAULT_PASSWORD_LENGTH,
