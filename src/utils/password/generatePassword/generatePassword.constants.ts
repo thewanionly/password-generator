@@ -4,6 +4,7 @@ export const PASSWORD_REGEX = {
   LOWERCASE_LETTERS: /[a-z]/,
   NUMBERS: /\d/,
   SYMBOLS: /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/,
+  ALL: /[a-zA-Z\d[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/,
 };
 
 export const CHARACTERS = {

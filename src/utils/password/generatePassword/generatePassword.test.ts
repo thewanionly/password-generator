@@ -7,10 +7,7 @@ describe('generatePassword', () => {
       const password = generatePassword();
 
       expect(password).toHaveLength(DEFAULT_PASSWORD_LENGTH);
-      expect(password).toMatch(PASSWORD_REGEX.UPPERCASE_LETTERS);
-      expect(password).toMatch(PASSWORD_REGEX.LOWERCASE_LETTERS);
-      expect(password).toMatch(PASSWORD_REGEX.NUMBERS);
-      expect(password).toMatch(PASSWORD_REGEX.SYMBOLS);
+      expect(password).toMatch(PASSWORD_REGEX.ALL);
     });
   });
 
