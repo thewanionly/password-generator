@@ -1,4 +1,4 @@
-import { DEFAULT_PASSWORD_LENGTH } from './generatePassword.constants';
+import { DEFAULT_PASSWORD_LENGTH, CHARACTERS } from './generatePassword.constants';
 
 type PasswordOptions = {
   withUpperCase: boolean;
@@ -7,13 +7,8 @@ type PasswordOptions = {
   withSymbols: boolean;
 };
 
-const getRandomNumber = (min: number, max: number): number => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
 export const generatePassword = (
   length = DEFAULT_PASSWORD_LENGTH,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   options: PasswordOptions = {
     withUpperCase: true,
     withLowerCase: true,
@@ -21,5 +16,22 @@ export const generatePassword = (
     withSymbols: true,
   }
 ): string => {
-  return Array.from({ length }, () => getRandomNumber(0, 9)).join('');
+  let password = '',
+    includedChars = '';
+
+  // Determine all included characters based on the `options`
+  const { withUpperCase, withLowerCase, withNumbers, withSymbols } = options;
+
+  if (withUpperCase) includedChars += CHARACTERS.UPPERCASE_LETTERS;
+  if (withLowerCase) includedChars += CHARACTERS.LOWERCASE_LETTERS;
+  if (withNumbers) includedChars += CHARACTERS.NUMBERS;
+  if (withSymbols) includedChars += CHARACTERS.SYMBOLS;
+
+  // Gerenate one random character from the included characters `length` times
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * includedChars.length);
+    password += includedChars[randomIndex];
+  }
+
+  return password;
 };

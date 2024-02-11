@@ -1,5 +1,5 @@
 import { generatePassword } from './generatePassword';
-import { DEFAULT_PASSWORD_LENGTH } from './generatePassword.constants';
+import { DEFAULT_PASSWORD_LENGTH, PASSWORD_REGEX } from './generatePassword.constants';
 
 describe('generatePassword', () => {
   describe('no arguments passed', () => {
@@ -7,12 +7,19 @@ describe('generatePassword', () => {
       const password = generatePassword();
 
       expect(password).toHaveLength(DEFAULT_PASSWORD_LENGTH);
-      // TODO:
-      // check if password has uppercase
-      // check if password has lowercase
-      // check if password has numbers
-      // check if password has symbols
+      expect(password).toMatch(PASSWORD_REGEX.UPPERCASE_LETTERS);
+      expect(password).toMatch(PASSWORD_REGEX.LOWERCASE_LETTERS);
+      expect(password).toMatch(PASSWORD_REGEX.NUMBERS);
+      expect(password).toMatch(PASSWORD_REGEX.SYMBOLS);
     });
+  });
+
+  describe('invalid inputs', () => {
+    xit('throws an error when length is 0', () => {});
+
+    xit('throws an error when length is greater than 0 but all options are false', () => {});
+
+    xit('throws an error when all options are false', () => {});
   });
 
   describe('length specified, no options passed', () => {
