@@ -6,13 +6,13 @@ import { Button } from '@/components/Button';
 import { Copy } from '@/components/Icon';
 import { cn } from '@/utils/styles';
 
+import { COPIED_DURATION, COPIED_TEXT } from './CopyableText.constants';
+
 type CopyableTextProps = {
   className?: string;
   value?: string;
   placeholder?: string;
 };
-
-const COPIED_DURATION = 2500;
 
 export const CopyableText = React.forwardRef<HTMLDivElement, CopyableTextProps>(
   ({ className = '', value, placeholder }, ref) => {
@@ -46,7 +46,7 @@ export const CopyableText = React.forwardRef<HTMLDivElement, CopyableTextProps>(
         >
           {value || placeholder}
         </span>
-        {isCopied && <span className="mr-4 uppercase text-green">copied</span>}
+        {isCopied && <span className="mr-4 uppercase text-green">{COPIED_TEXT}</span>}
         <Button variant="ghost" onClick={handleCopy} disabled={!value} aria-label="copy value">
           <Copy
             title="copy value"
