@@ -4,21 +4,21 @@ export const PASSWORD_GENERATOR = {
   BUTTON_LABEL: 'Generate',
 };
 
-export const PASSWORD_RULES = [
-  {
+export const PASSWORD_RULES = {
+  withUpperCase: {
     label: 'Include Uppercase Letters',
     value: 'include_uppercase',
   },
-  {
+  withLowerCase: {
     label: 'Include Lowercase Letters',
     value: 'include_lowercase',
   },
-  {
+  withNumbers: {
     label: 'Include Numbers',
     value: 'include_numbers',
   },
-  {
+  withSymbols: {
     label: 'Include Symbols',
     value: 'include_symbols',
   },
-];
+};

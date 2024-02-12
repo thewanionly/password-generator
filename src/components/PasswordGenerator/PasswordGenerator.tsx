@@ -45,10 +45,10 @@ export const PasswordGenerator = ({
     event.preventDefault();
 
     const generatedPassword = generatePassword(charLength, {
-      withUpperCase: appliedRules.has(PASSWORD_RULES[0].value),
-      withLowerCase: appliedRules.has(PASSWORD_RULES[1].value),
-      withNumbers: appliedRules.has(PASSWORD_RULES[2].value),
-      withSymbols: appliedRules.has(PASSWORD_RULES[3].value),
+      withUpperCase: appliedRules.has(PASSWORD_RULES.withUpperCase.value),
+      withLowerCase: appliedRules.has(PASSWORD_RULES.withLowerCase.value),
+      withNumbers: appliedRules.has(PASSWORD_RULES.withNumbers.value),
+      withSymbols: appliedRules.has(PASSWORD_RULES.withSymbols.value),
     });
 
     setPassword(generatedPassword);
@@ -64,7 +64,7 @@ export const PasswordGenerator = ({
       />
       <form className="bg-grey-dark p-4" onSubmit={handleSubmit}>
         <PasswordCharLengthSlider className="mb-11" value={charLength} onChange={setCharLength} />
-        {PASSWORD_RULES.map(({ label, value }) => (
+        {Object.values(PASSWORD_RULES).map(({ label, value }) => (
           <FormControlLabel
             key={value}
             className="mb-4"

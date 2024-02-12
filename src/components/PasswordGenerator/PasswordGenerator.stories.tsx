@@ -26,10 +26,17 @@ export const Empty: Story = {
   args: { ...commonArgs },
 };
 
+export const WithLength: Story = {
+  args: {
+    ...commonArgs,
+    initialCharLength: 8,
+  },
+};
+
 export const TooWeak: Story = {
   args: {
     ...commonArgs,
     initialCharLength: 1,
-    initialAppliedRules: new Set([PASSWORD_RULES[0].value]),
+    initialAppliedRules: new Set([PASSWORD_RULES.withUpperCase.value]),
   },
 };
