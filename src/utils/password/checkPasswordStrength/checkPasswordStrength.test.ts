@@ -11,34 +11,30 @@ describe('checkPasswordStrength', () => {
   });
 
   describe('different strengths', () => {
-    xit('returns "too weak" and a value of ... when password has ...', () => {
-      const { strength, value } = checkPasswordStrength('aws') ?? {};
+    it('returns "too weak" and a value of 1 when password has length of 3 and only one rule is applied', () => {
+      const { strength, value } = checkPasswordStrength('abc') ?? {};
 
-      // TODO:
       expect(strength).toBe(PasswordStrength.TOO_WEAK);
       expect(value).toBe(1);
     });
 
-    xit('returns "weak" and a value of ... when password has ...', () => {
-      const { strength, value } = checkPasswordStrength('aws') ?? {};
+    it('returns "weak" and a value of 2 when password has length of 6 and only one rule is applied', () => {
+      const { strength, value } = checkPasswordStrength('abcdef') ?? {};
 
-      // TODO:
       expect(strength).toBe(PasswordStrength.WEAK);
       expect(value).toBe(2);
     });
 
-    xit('returns "medium" and a value of ... when password has ...', () => {
-      const { strength, value } = checkPasswordStrength('aws') ?? {};
+    it('returns "medium" and a value of 3 when password has length of 9 and only two rules are applied', () => {
+      const { strength, value } = checkPasswordStrength('abcABCdeF') ?? {};
 
-      // TODO:
       expect(strength).toBe(PasswordStrength.MEDIUM);
       expect(value).toBe(3);
     });
 
-    xit('returns "strong" and a value of ... when password has ...', () => {
-      const { strength, value } = checkPasswordStrength('aws') ?? {};
+    it('returns "medium" and a value of 4 when password has length of 12 and all rules are applied', () => {
+      const { strength, value } = checkPasswordStrength('abcABC123#$%aB9') ?? {};
 
-      // TODO:
       expect(strength).toBe(PasswordStrength.STRONG);
       expect(value).toBe(4);
     });
