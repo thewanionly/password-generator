@@ -10,7 +10,7 @@ type PasswordStrengthMeterProps = {
 };
 
 export const PasswordStrengthMeter = ({ className = '', password }: PasswordStrengthMeterProps) => {
-  const { strength = '', value = 0 } = checkPasswordStrength(password) ?? {};
+  const { strength, value } = checkPasswordStrength(password);
   const strengthText = strength && PASSWORD_STRENGTH_TEXT[strength];
 
   return (

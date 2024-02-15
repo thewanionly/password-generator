@@ -1,7 +1,7 @@
 import { PasswordStrength } from './checkPasswordStrength.constants';
 
 type CheckPasswordStrengthReturnValue = {
-  strength: PasswordStrength;
+  strength: PasswordStrength | '';
   value: number;
 };
 
@@ -16,10 +16,8 @@ const CHAR_REGEX = {
 
 const RECOMMENDED_PASSWORD_LENGTH = 12;
 
-export const checkPasswordStrength = (
-  password: string
-): CheckPasswordStrengthReturnValue | null => {
-  if (!password) return null;
+export const checkPasswordStrength = (password: string): CheckPasswordStrengthReturnValue => {
+  if (!password) return { strength: '', value: 0 };
 
   // scale length score between 0 and 1
   const lengthScore = Math.min(1, password.length / RECOMMENDED_PASSWORD_LENGTH);
