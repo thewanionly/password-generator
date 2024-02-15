@@ -1,29 +1,23 @@
+import { checkPasswordStrength } from '@/utils/password/checkPasswordStrength';
 import { cn } from '@/utils/styles';
 
-import { Meter, getMeterLevel } from '../Meter';
-import {
-  LEVEL_TO_STRENGTH_MAP,
-  PASSWORD_STRENGTH_FACTORS_NUM,
-  PASSWORD_STRENGTH_LABEL,
-} from './PasswordStrengthMeter.constants';
+import { Meter } from '../Meter';
+import { PASSWORD_STRENGTH_LABEL, PASSWORD_STRENGTH_TEXT } from './PasswordStrengthMeter.constants';
 
 type PasswordStrengthMeterProps = {
   className?: string;
-  value: number;
+  password: string;
 };
 
-export const PasswordStrengthMeter = ({
-  className = '',
-  value = 0,
-}: PasswordStrengthMeterProps) => {
-  const level = getMeterLevel(value, PASSWORD_STRENGTH_FACTORS_NUM);
-  const strength = LEVEL_TO_STRENGTH_MAP[level];
+export const PasswordStrengthMeter = ({ className = '', password }: PasswordStrengthMeterProps) => {
+  const { strength = '', value = 0 } = checkPasswordStrength(password) ?? {};
+  const strengthText = strength && PASSWORD_STRENGTH_TEXT[strength];
 
   return (
     <div className={cn('flex items-center justify-between bg-grey-darkest p-4', className)}>
       <span className="flex-1 uppercase text-grey">{PASSWORD_STRENGTH_LABEL}</span>
-      <span className="mr-4 text-lg uppercase text-grey-lightest">{strength}</span>
-      <Meter value={value} max={PASSWORD_STRENGTH_FACTORS_NUM} numOfBars={4} />
+      <span className="mr-4 text-lg uppercase text-grey-lightest">{strengthText}</span>
+      <Meter value={value} max={4} numOfBars={4} />
     </div>
   );
 };

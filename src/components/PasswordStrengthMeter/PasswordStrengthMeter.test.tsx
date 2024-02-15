@@ -1,7 +1,7 @@
 import { composeStories, render, screen, within } from '@/tests/utils';
+import { PasswordStrength } from '@/utils/password/checkPasswordStrength';
 
-import { MeterBarLevel } from '../Meter';
-import { LEVEL_TO_STRENGTH_MAP, PASSWORD_STRENGTH_LABEL } from './PasswordStrengthMeter.constants';
+import { PASSWORD_STRENGTH_LABEL, PASSWORD_STRENGTH_TEXT } from './PasswordStrengthMeter.constants';
 import * as PasswordStrengthMeterStories from './PasswordStrengthMeter.stories';
 
 const { Empty, TooWeak, Weak, Medium, Strong } = composeStories(PasswordStrengthMeterStories);
@@ -39,7 +39,7 @@ describe('PasswordStrengthMeter', () => {
 
     const meter = screen.getByRole('meter');
     const bars = within(meter).queryAllByTestId('meter-bar-filled');
-    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.LOW]);
+    const label = screen.getByText(PASSWORD_STRENGTH_TEXT[PasswordStrength.TOO_WEAK]);
 
     expect(meter).toHaveAttribute('aria-valuenow', String(1));
     expect(bars).toHaveLength(1);
@@ -51,9 +51,9 @@ describe('PasswordStrengthMeter', () => {
 
     const meter = screen.getByRole('meter');
     const bars = within(meter).queryAllByTestId('meter-bar-filled');
-    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.MODERATE]);
+    const label = screen.getByText(PASSWORD_STRENGTH_TEXT[PasswordStrength.WEAK]);
 
-    expect(meter).toHaveAttribute('aria-valuenow', String(3));
+    expect(meter).toHaveAttribute('aria-valuenow', String(2));
     expect(bars).toHaveLength(2);
     expect(label).toBeInTheDocument();
   });
@@ -63,9 +63,9 @@ describe('PasswordStrengthMeter', () => {
 
     const meter = screen.getByRole('meter');
     const bars = within(meter).queryAllByTestId('meter-bar-filled');
-    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.MEDIUM]);
+    const label = screen.getByText(PASSWORD_STRENGTH_TEXT[PasswordStrength.MEDIUM]);
 
-    expect(meter).toHaveAttribute('aria-valuenow', String(4));
+    expect(meter).toHaveAttribute('aria-valuenow', String(3));
     expect(bars).toHaveLength(3);
     expect(label).toBeInTheDocument();
   });
@@ -75,9 +75,9 @@ describe('PasswordStrengthMeter', () => {
 
     const meter = screen.getByRole('meter');
     const bars = within(meter).queryAllByTestId('meter-bar-filled');
-    const label = screen.getByText(LEVEL_TO_STRENGTH_MAP[MeterBarLevel.HIGH]);
+    const label = screen.getByText(PASSWORD_STRENGTH_TEXT[PasswordStrength.STRONG]);
 
-    expect(meter).toHaveAttribute('aria-valuenow', String(5));
+    expect(meter).toHaveAttribute('aria-valuenow', String(4));
     expect(bars).toHaveLength(4);
     expect(label).toBeInTheDocument();
   });

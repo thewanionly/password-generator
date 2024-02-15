@@ -1,5 +1,5 @@
 import { composeStories, render, screen, userEvent, within } from '@/tests/utils';
-import { PASSWORD_REGEX } from '@/utils/password';
+import { PASSWORD_REGEX } from '@/utils/password/generatePassword';
 
 import { PASSWORD_CHARACTER_LENGTH_LABEL } from '../PasswordCharLengthSlider';
 import { PASSWORD_STRENGTH_LABEL } from '../PasswordStrengthMeter';

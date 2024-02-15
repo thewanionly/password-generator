@@ -1,11 +1,10 @@
-import { MeterBarLevel } from '../Meter';
+import { PasswordStrength } from '@/utils/password/checkPasswordStrength';
 
-export const LEVEL_TO_STRENGTH_MAP = {
-  [MeterBarLevel.EMPTY]: '',
-  [MeterBarLevel.LOW]: 'Too Weak!',
-  [MeterBarLevel.MODERATE]: 'Weak',
-  [MeterBarLevel.MEDIUM]: 'Medium',
-  [MeterBarLevel.HIGH]: 'Strong',
+export const PASSWORD_STRENGTH_TEXT = {
+  [PasswordStrength.TOO_WEAK]: 'Too Weak!',
+  [PasswordStrength.WEAK]: 'Weak',
+  [PasswordStrength.MEDIUM]: 'Medium',
+  [PasswordStrength.STRONG]: 'Strong',
 };
 
 export const PASSWORD_STRENGTH_FACTORS_NUM = 5;

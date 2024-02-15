@@ -7,7 +7,7 @@ import { FormControlLabel } from '@/components/FormControlLabel';
 import { ArrowRight } from '@/components/Icon';
 import { PasswordCharLengthSlider } from '@/components/PasswordCharLengthSlider';
 import { PasswordStrengthMeter } from '@/components/PasswordStrengthMeter';
-import { generatePassword } from '@/utils/password';
+import { generatePassword } from '@/utils/password/generatePassword';
 import { cn } from '@/utils/styles';
 
 import { PASSWORD_GENERATOR, PASSWORD_RULES } from './PasswordGenerator.constants';
@@ -78,7 +78,7 @@ export const PasswordGenerator = ({
             label={label}
           />
         ))}
-        <PasswordStrengthMeter className="mb-4 mt-8" value={0} />
+        <PasswordStrengthMeter className="mb-4 mt-8" password={password} />
         <Button
           className="flex w-full items-center justify-center gap-4"
           disabled={!hasAppliedRules}
