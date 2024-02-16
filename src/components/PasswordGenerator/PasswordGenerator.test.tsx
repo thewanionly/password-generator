@@ -114,18 +114,20 @@ describe('PasswordGenerator', () => {
   });
 
   describe('Interaction', () => {
-    it('updates the copyable text with generated password and hides the placeholder after clicking generate password', async () => {
+    it('updates the copyable text with generated password, enables the copy button, and hides the placeholder after clicking generate password', async () => {
       render(<HasLengthAndRules />);
 
       const generateBtn = screen.getByRole('button', { name: PASSWORD_GENERATOR.BUTTON_LABEL });
-
       await userEvent.click(generateBtn);
 
       const placeHolder = screen.queryByText(PASSWORD_GENERATOR.COPYABLE_TEXT_PLACEHOLDER);
       const value = screen.getByTestId('copyable-text-value');
+      const copyBtnIcon = screen.getByRole('button', { name: 'copy value' });
 
       expect(placeHolder).not.toBeInTheDocument();
       expect(value).toBeInTheDocument();
+      expect(copyBtnIcon).toBeInTheDocument();
+      expect(copyBtnIcon).toBeEnabled();
     });
 
     it('copies the generated password after clicking the copy icon button', async () => {
@@ -146,11 +148,12 @@ describe('PasswordGenerator', () => {
       render(<HasLengthAndRules />);
 
       const generateBtn = screen.getByRole('button', { name: PASSWORD_GENERATOR.BUTTON_LABEL });
-
       await userEvent.click(generateBtn);
 
+      const charValue = screen.getByText(HasLengthAndRules.args.initialCharLength as number);
       const value = screen.getByTestId('copyable-text-value');
 
+      expect(charValue).toBeInTheDocument();
       expect(value.textContent).toHaveLength(HasLengthAndRules.args.initialCharLength as number);
     });
 
