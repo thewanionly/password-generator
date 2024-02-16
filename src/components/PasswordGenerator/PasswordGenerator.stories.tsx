@@ -26,17 +26,33 @@ export const Empty: Story = {
   args: { ...commonArgs },
 };
 
-export const WithLength: Story = {
+export const HasLength: Story = {
   args: {
     ...commonArgs,
-    initialCharLength: 8,
+    initialCharLength: 10,
   },
 };
 
-export const TooWeak: Story = {
+export const HasLengthAndRules: Story = {
   args: {
     ...commonArgs,
-    initialCharLength: 1,
-    initialAppliedRules: new Set([PASSWORD_RULES.withUpperCase.value]),
+    initialCharLength: 10,
+    initialAppliedRules: new Set([
+      PASSWORD_RULES.withLowerCase.value,
+      PASSWORD_RULES.withUpperCase.value,
+    ]),
+  },
+};
+
+export const Max: Story = {
+  args: {
+    ...commonArgs,
+    initialCharLength: 20,
+    initialAppliedRules: new Set([
+      PASSWORD_RULES.withLowerCase.value,
+      PASSWORD_RULES.withUpperCase.value,
+      PASSWORD_RULES.withNumbers.value,
+      PASSWORD_RULES.withSymbols.value,
+    ]),
   },
 };

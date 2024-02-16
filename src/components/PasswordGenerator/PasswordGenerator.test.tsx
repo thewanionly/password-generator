@@ -1,12 +1,13 @@
 import { composeStories, render, screen, userEvent, within } from '@/tests/utils';
+import { PasswordStrength } from '@/utils/password/checkPasswordStrength';
 import { PASSWORD_REGEX } from '@/utils/password/generatePassword';
 
 import { PASSWORD_CHARACTER_LENGTH_LABEL } from '../PasswordCharLengthSlider';
-import { PASSWORD_STRENGTH_LABEL } from '../PasswordStrengthMeter';
+import { PASSWORD_STRENGTH_LABEL, PASSWORD_STRENGTH_TEXT } from '../PasswordStrengthMeter';
 import { PASSWORD_GENERATOR, PASSWORD_RULES } from './PasswordGenerator.constants';
 import * as PasswordGeneratorStories from './PasswordGenerator.stories';
 
-const { Empty, WithLength, TooWeak } = composeStories(PasswordGeneratorStories);
+const { Empty, HasLength, HasLengthAndRules, Max } = composeStories(PasswordGeneratorStories);
 
 describe('PasswordGenerator', () => {
   describe('Layout', () => {
@@ -103,7 +104,7 @@ describe('PasswordGenerator', () => {
     });
 
     it('enables the generate button when character length is greather than 0 and at least one rule checkbox is ticked', () => {
-      render(<TooWeak />);
+      render(<HasLengthAndRules />);
 
       const generateBtn = screen.getByRole('button', { name: PASSWORD_GENERATOR.BUTTON_LABEL });
 
@@ -114,7 +115,7 @@ describe('PasswordGenerator', () => {
 
   describe('Interaction', () => {
     it('updates the copyable text with generated password and hides the placeholder after clicking generate password', async () => {
-      render(<TooWeak />);
+      render(<HasLengthAndRules />);
 
       const generateBtn = screen.getByRole('button', { name: PASSWORD_GENERATOR.BUTTON_LABEL });
 
@@ -128,7 +129,7 @@ describe('PasswordGenerator', () => {
     });
 
     it('copies the generated password after clicking the copy icon button', async () => {
-      render(<TooWeak />);
+      render(<HasLengthAndRules />);
 
       const generateBtn = screen.getByRole('button', { name: PASSWORD_GENERATOR.BUTTON_LABEL });
       await userEvent.click(generateBtn);
@@ -142,7 +143,7 @@ describe('PasswordGenerator', () => {
     });
 
     it('generates a password of the same length as the specified character length', async () => {
-      render(<TooWeak />);
+      render(<HasLengthAndRules />);
 
       const generateBtn = screen.getByRole('button', { name: PASSWORD_GENERATOR.BUTTON_LABEL });
 
@@ -150,7 +151,7 @@ describe('PasswordGenerator', () => {
 
       const value = screen.getByTestId('copyable-text-value');
 
-      expect(value.textContent).toHaveLength(TooWeak.args.initialCharLength as number);
+      expect(value.textContent).toHaveLength(HasLengthAndRules.args.initialCharLength as number);
     });
 
     it.each`
@@ -174,7 +175,7 @@ describe('PasswordGenerator', () => {
       `generates a password that includes $description`,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       async ({ description, regExPattern, ...optionValues }) => {
-        render(<WithLength />);
+        render(<HasLength />);
 
         // Get all the checbkox elements that are included in the options
         const checkboxes: HTMLInputElement[] = [];
@@ -207,5 +208,24 @@ describe('PasswordGenerator', () => {
         expect(value).toHaveTextContent(new RegExp(regExPattern));
       }
     );
+
+    it('displays a filled-in strength meter with corresponding strength label/text', async () => {
+      render(<Max />);
+
+      const generateBtn = screen.getByRole('button', { name: PASSWORD_GENERATOR.BUTTON_LABEL });
+      await userEvent.click(generateBtn);
+
+      const meter = screen.getByRole('meter');
+      const bars = within(meter).queryAllByTestId('meter-bar-filled');
+      const label = screen.getByText(
+        new RegExp(
+          `${PASSWORD_STRENGTH_TEXT[PasswordStrength.TOO_WEAK]}|${PASSWORD_STRENGTH_TEXT[PasswordStrength.WEAK]}|${PASSWORD_STRENGTH_TEXT[PasswordStrength.MEDIUM]}|${PASSWORD_STRENGTH_TEXT[PasswordStrength.STRONG]}`
+        )
+      );
+
+      expect(meter).not.toHaveAttribute('aria-valuenow', String(0));
+      expect(bars).not.toHaveLength(0);
+      expect(label).toBeInTheDocument();
+    });
   });
 });
