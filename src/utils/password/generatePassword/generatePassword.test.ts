@@ -2,7 +2,6 @@ import { DEFAULT_PASSWORD_LENGTH } from '@/constants/password';
 
 import { generatePassword } from './generatePassword';
 import { INVALID_INPUT_ERROR_MESSAGES, PASSWORD_REGEX } from './generatePassword.constants';
-import { PasswordOptions } from './generatePassword.types';
 
 describe('generatePassword', () => {
   describe('no arguments passed', () => {
@@ -42,7 +41,7 @@ describe('generatePassword', () => {
 
     it(`generates password with specified length and includes only the specified option passed`, () => {
       const length = 20;
-      const options: PasswordOptions = { withNumbers: true };
+      const options = { withNumbers: true };
       const password = generatePassword(length, options);
 
       expect(password).toHaveLength(length);
@@ -71,7 +70,7 @@ describe('generatePassword', () => {
     `(
       `generates password with length of ${DEFAULT_PASSWORD_LENGTH} and includes $description`,
       ({ regExPattern, withUpperCase, withLowerCase, withNumbers, withSymbols }) => {
-        const options: PasswordOptions = {
+        const options = {
           withUpperCase,
           withLowerCase,
           withNumbers,

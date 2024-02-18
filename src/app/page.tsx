@@ -7,6 +7,10 @@ export default function Home() {
       <PasswordGenerator
         className="shrink-1 grow-0 basis-[540px]"
         initialCharLength={DEFAULT_PASSWORD_LENGTH}
+        initialAppliedRules={{
+          withLowerCase: true,
+          withUpperCase: true,
+        }}
       />
     </main>
   );

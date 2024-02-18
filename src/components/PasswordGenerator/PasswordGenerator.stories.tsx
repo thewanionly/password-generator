@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { PasswordGenerator } from './PasswordGenerator';
-import { PASSWORD_RULES } from './PasswordGenerator.constants';
 
 /**
  * The default export defines how Storybook lists our stories in the preview
@@ -37,10 +36,10 @@ export const HasLengthAndRules: Story = {
   args: {
     ...commonArgs,
     initialCharLength: 10,
-    initialAppliedRules: new Set([
-      PASSWORD_RULES.withLowerCase.value,
-      PASSWORD_RULES.withUpperCase.value,
-    ]),
+    initialAppliedRules: {
+      withLowerCase: true,
+      withUpperCase: true,
+    },
   },
 };
 
@@ -48,11 +47,11 @@ export const Max: Story = {
   args: {
     ...commonArgs,
     initialCharLength: 20,
-    initialAppliedRules: new Set([
-      PASSWORD_RULES.withLowerCase.value,
-      PASSWORD_RULES.withUpperCase.value,
-      PASSWORD_RULES.withNumbers.value,
-      PASSWORD_RULES.withSymbols.value,
-    ]),
+    initialAppliedRules: {
+      withLowerCase: true,
+      withUpperCase: true,
+      withNumbers: true,
+      withSymbols: true,
+    },
   },
 };

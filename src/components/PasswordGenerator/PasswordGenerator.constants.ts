@@ -1,10 +1,12 @@
+import { PasswordOptions } from '@/constants/password';
+
 export const PASSWORD_GENERATOR = {
   TITLE: 'Password Generator',
   COPYABLE_TEXT_PLACEHOLDER: 'P4$5W0rD!',
   BUTTON_LABEL: 'Generate',
 };
 
-export const PASSWORD_RULES = {
+export const PASSWORD_RULES: Record<keyof PasswordOptions, Record<string, string>> = {
   withUpperCase: {
     label: 'Include Uppercase Letters',
     value: 'include_uppercase',

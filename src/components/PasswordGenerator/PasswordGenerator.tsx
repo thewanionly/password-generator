@@ -9,6 +9,7 @@ import { FormControlLabel } from '@/components/FormControlLabel';
 import { ArrowRight } from '@/components/Icon';
 import { PasswordCharLengthSlider } from '@/components/PasswordCharLengthSlider';
 import { PasswordStrengthMeter } from '@/components/PasswordStrengthMeter';
+import { PasswordOptions } from '@/constants/password';
 import { generatePassword } from '@/utils/password/generatePassword';
 import { cn } from '@/utils/styles';
 
@@ -17,17 +18,30 @@ import { PASSWORD_GENERATOR, PASSWORD_RULES } from './PasswordGenerator.constant
 export type PasswordGeneratorProps = {
   className?: string;
   initialCharLength?: number;
-  initialAppliedRules?: Set<string>;
+  initialAppliedRules?: PasswordOptions;
+};
+
+const transformInitalAppliedRules = (initialAppliedRules?: PasswordOptions): Set<string> => {
+  if (!initialAppliedRules) return new Set<string>();
+
+  return new Set<string>(
+    Object.entries(initialAppliedRules)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .filter(([_, value]) => value)
+      .map(([key]) => PASSWORD_RULES[key as keyof PasswordOptions].value)
+  );
 };
 
 export const PasswordGenerator = ({
   className = '',
   initialCharLength = 0,
-  initialAppliedRules = new Set<string>(),
+  initialAppliedRules,
 }: PasswordGeneratorProps) => {
   const [password, setPassword] = useState('');
   const [charLength, setCharLength] = useState(initialCharLength);
-  const [appliedRules, setAppliedRules] = useState<Set<string>>(initialAppliedRules);
+  const [appliedRules, setAppliedRules] = useState<Set<string>>(
+    transformInitalAppliedRules(initialAppliedRules)
+  );
 
   const hasAppliedRules = charLength > 0 && appliedRules.size > 0;
 
