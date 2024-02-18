@@ -35,13 +35,16 @@ export const CopyableText = React.forwardRef<HTMLDivElement, CopyableTextProps>(
       <div
         ref={ref}
         className={cn(
-          'flex items-center justify-between bg-grey-dark p-4',
+          'flex items-center justify-between bg-grey-dark p-4 md:px-8 md:py-5',
           !value && 'pointer-events-none',
           className
         )}
       >
         <span
-          className={cn('mr-3 flex-1 text-2xl text-grey-lightest', !value && 'opacity-25')}
+          className={cn(
+            'mr-3 flex-1 text-2xl text-grey-lightest md:text-[32px]',
+            !value && 'opacity-25'
+          )}
           data-testid={value && 'copyable-text-value'}
         >
           {value || placeholder}
@@ -51,7 +54,7 @@ export const CopyableText = React.forwardRef<HTMLDivElement, CopyableTextProps>(
           <Copy
             title="copy value"
             className={cn(
-              'h-5 w-[17.5px] text-green',
+              'h-5 w-[17.5px] text-green md:h-6 md:w-[21px]',
               value ? 'cursor-pointer hover:text-grey-lightest' : 'opacity-25',
               isCopied && 'text-green hover:text-green'
             )}

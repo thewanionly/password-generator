@@ -22,9 +22,9 @@ export const PasswordCharLengthSlider = ({
 
   return (
     <div className={className}>
-      <div className="mb-[18px] flex items-center justify-between">
-        <span className="text-grey-lightest">{PASSWORD_CHARACTER_LENGTH_LABEL}</span>
-        <span className="text-2xl text-green">{value}</span>
+      <div className="mb-[18px] flex items-center justify-between md:mb-[26px]">
+        <span className="text-grey-lightest md:text-lg">{PASSWORD_CHARACTER_LENGTH_LABEL}</span>
+        <span className="text-2xl text-green md:text-[32px]">{value}</span>
       </div>
       <Slider
         value={[value]}

@@ -58,18 +58,22 @@ export const PasswordGenerator = ({
 
   return (
     <div className={cn('bg-grey-darkest', className)}>
-      <h1 className="mb-4 text-center text-grey">{PASSWORD_GENERATOR.TITLE}</h1>
+      <h1 className="mb-4 text-center text-grey md:mb-8 md:text-2xl">{PASSWORD_GENERATOR.TITLE}</h1>
       <CopyableText
-        className="mb-4"
+        className="md:mb mb-4"
         placeholder={PASSWORD_GENERATOR.COPYABLE_TEXT_PLACEHOLDER}
         value={password}
       />
-      <form className="bg-grey-dark p-4" onSubmit={handleSubmit}>
-        <PasswordCharLengthSlider className="mb-11" value={charLength} onChange={setCharLength} />
+      <form className="bg-grey-dark p-4 md:p-8" onSubmit={handleSubmit}>
+        <PasswordCharLengthSlider
+          className="mb-[42px]"
+          value={charLength}
+          onChange={setCharLength}
+        />
         {Object.values(PASSWORD_RULES).map(({ label, value }) => (
           <FormControlLabel
             key={value}
-            className="mb-4"
+            className="mb-4 md:gap-6 md:text-lg"
             control={
               <Checkbox
                 id={value}
@@ -80,9 +84,9 @@ export const PasswordGenerator = ({
             label={label}
           />
         ))}
-        <PasswordStrengthMeter className="mb-4 mt-8" password={password} />
+        <PasswordStrengthMeter className="mb-4 mt-8 md:mb-8" password={password} />
         <Button
-          className="flex w-full items-center justify-center gap-4"
+          className="flex w-full items-center justify-center gap-4 md:gap-6 md:text-lg"
           disabled={!hasAppliedRules}
           type="submit"
         >
