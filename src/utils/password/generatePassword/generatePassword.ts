@@ -1,8 +1,6 @@
-import {
-  DEFAULT_PASSWORD_LENGTH,
-  CHARACTERS,
-  INVALID_INPUT_ERROR_MESSAGES,
-} from './generatePassword.constants';
+import { DEFAULT_PASSWORD_LENGTH } from '@/constants/password';
+
+import { CHARACTERS, INVALID_INPUT_ERROR_MESSAGES } from './generatePassword.constants';
 import { PasswordOptions } from './generatePassword.types';
 
 export const generatePassword = (

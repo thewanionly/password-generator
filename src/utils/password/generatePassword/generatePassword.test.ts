@@ -1,9 +1,7 @@
+import { DEFAULT_PASSWORD_LENGTH } from '@/constants/password';
+
 import { generatePassword } from './generatePassword';
-import {
-  DEFAULT_PASSWORD_LENGTH,
-  INVALID_INPUT_ERROR_MESSAGES,
-  PASSWORD_REGEX,
-} from './generatePassword.constants';
+import { INVALID_INPUT_ERROR_MESSAGES, PASSWORD_REGEX } from './generatePassword.constants';
 import { PasswordOptions } from './generatePassword.types';
 
 describe('generatePassword', () => {

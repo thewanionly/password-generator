@@ -1,5 +1,3 @@
-export const DEFAULT_PASSWORD_LENGTH = 12;
-
 // These Reg Exes matches only if the specified expression/s is the only expression in the string
 // (other expression being included not allowed)
 export const PASSWORD_REGEX = {
