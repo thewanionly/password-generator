@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={jetBrainsMono.className}>
-      <body>{children}</body>
+      <body className="min-h-screen bg-grey-darkest text-grey">{children}</body>
     </html>
   );
 }

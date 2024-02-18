@@ -1,3 +1,5 @@
+'use client';
+
 import { FormEvent, useState } from 'react';
 
 import { Button } from '@/components/Button';
@@ -55,7 +57,7 @@ export const PasswordGenerator = ({
   };
 
   return (
-    <div className={cn('bg-grey-darkest p-4', className)}>
+    <div className={cn('bg-grey-darkest', className)}>
       <h1 className="mb-4 text-center text-grey">{PASSWORD_GENERATOR.TITLE}</h1>
       <CopyableText
         className="mb-4"

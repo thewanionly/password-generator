@@ -20,7 +20,7 @@ export default meta;
 
 type Story = StoryObj<typeof PasswordGenerator>;
 
-const commonArgs = { className: ' min-w-[375px] max-w-[566px] ' };
+const commonArgs = { className: ' min-w-[375px] max-w-[566px] p-4' };
 
 export const Empty: Story = {
   args: { ...commonArgs },
