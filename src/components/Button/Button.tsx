@@ -12,7 +12,7 @@ const buttonVariants = cva('uppercase', {
         border-2 border-green bg-green text-grey-dark
         enabled:hover:bg-grey-dark enabled:hover:text-green
         disabled:opacity-50 disabled:cursor-not-allowed`,
-      ghost: 'p-1',
+      ghost: 'p-1 disabled:opacity-50 disabled:cursor-not-allowed',
     },
   },
   defaultVariants: {

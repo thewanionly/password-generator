@@ -36,7 +36,6 @@ export const CopyableText = React.forwardRef<HTMLDivElement, CopyableTextProps>(
         ref={ref}
         className={cn(
           'flex items-center justify-between bg-grey-dark p-4 md:px-8 md:py-5',
-          !value && 'pointer-events-none',
           className
         )}
       >
