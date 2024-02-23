@@ -1,0 +1,13 @@
+{
+  "name": "Password Generator",
+  "short_name": "Password Generator",
+  "description": "This application let's you generate a password you can use for your accounts.",
+  "start_url": "/",
+  "icons": [
+    { "src": "/icon.ico", "sizes": "any", "type": "image/x-icon" },
+    { "src": "/apple-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
