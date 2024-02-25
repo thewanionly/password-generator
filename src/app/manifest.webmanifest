@@ -4,7 +4,7 @@
   "description": "This application let's you generate a password you can use for your accounts.",
   "start_url": "/",
   "icons": [
-    { "src": "/icon.ico", "sizes": "any", "type": "image/x-icon" },
+    { "src": "/icon.ico", "sizes": "16x16", "type": "image/x-icon" },
     { "src": "/apple-icon.png", "sizes": "180x180", "type": "image/png" }
   ],
   "theme_color": "#ffffff",
