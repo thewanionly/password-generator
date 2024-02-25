@@ -42,12 +42,12 @@ describe('CopyableText', () => {
     render(<WithValue />);
 
     const copyIcon = screen.getByTitle('copy value');
-    const copiedText = screen.getByText(COPIED_TEXT);
-    expect(copiedText).toHaveClass('invisible');
 
     await userEvent.click(copyIcon);
 
-    expect(copiedText).toHaveClass('visible');
+    const copiedText = screen.getByText(COPIED_TEXT);
+
+    expect(copiedText).toBeInTheDocument();
   });
 
   it(`hides ${COPIED_TEXT} after ${COPIED_DURATION} ms after copy icon is clicked`, async () => {
@@ -58,10 +58,8 @@ describe('CopyableText', () => {
     await userEvent.click(copyIcon);
 
     const copiedText = screen.getByText(COPIED_TEXT);
-    expect(copiedText).toHaveClass('visible');
+    expect(copiedText).toBeInTheDocument();
 
-    await waitFor(() => expect(copiedText).toHaveClass('invisible'), {
-      timeout: COPIED_DURATION,
-    });
+    await waitFor(() => expect(copiedText).not.toBeInTheDocument(), { timeout: COPIED_DURATION });
   });
 });

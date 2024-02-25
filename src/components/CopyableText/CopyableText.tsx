@@ -48,24 +48,23 @@ export const CopyableText = React.forwardRef<HTMLDivElement, CopyableTextProps>(
         >
           {value || placeholder}
         </span>
-        <span
-          className={cn(
-            'mr-2 text-sm uppercase text-green md:mr-4 md:text-base',
-            isCopied ? 'visible' : 'invisible'
+        <div className="relative flex">
+          {isCopied && (
+            <span className="absolute right-7 flex h-full items-center bg-grey-dark p-1 text-sm uppercase text-green md:right-8 md:p-2 md:text-base">
+              {COPIED_TEXT}
+            </span>
           )}
-        >
-          {COPIED_TEXT}
-        </span>
-        <Button variant="ghost" onClick={handleCopy} disabled={!value} aria-label="copy value">
-          <Copy
-            title="copy value"
-            className={cn(
-              'h-5 w-[17.5px] text-green md:h-6 md:w-[21px]',
-              value ? 'cursor-pointer hover:text-grey-lightest' : 'opacity-25',
-              isCopied && 'text-green hover:text-green'
-            )}
-          />
-        </Button>
+          <Button variant="ghost" onClick={handleCopy} disabled={!value} aria-label="copy value">
+            <Copy
+              title="copy value"
+              className={cn(
+                'h-5 w-[17.5px] text-green md:h-6 md:w-[21px]',
+                value ? 'cursor-pointer hover:text-grey-lightest' : 'opacity-25',
+                isCopied && 'text-green hover:text-green'
+              )}
+            />
+          </Button>
+        </div>
       </div>
     );
   }
