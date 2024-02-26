@@ -22,7 +22,7 @@ export const PasswordStrengthMeter = ({ className = '', password }: PasswordStre
     >
       <span className="flex-1 uppercase text-grey md:text-lg">{PASSWORD_STRENGTH_LABEL}</span>
       <span className="mr-4 text-lg uppercase text-grey-lightest md:text-2xl">{strengthText}</span>
-      <Meter value={value} max={4} numOfBars={4} />
+      <Meter className="flex h-8 items-center" value={value} max={4} numOfBars={4} />
     </div>
   );
 };
