@@ -21,35 +21,35 @@ type Story = StoryObj<typeof PasswordStrengthMeter>;
 
 export const Empty: Story = {
   args: {
-    className: 'w-80',
+    className: 'w-[343px]',
     password: '',
   },
 };
 
 export const TooWeak: Story = {
   args: {
-    className: 'w-80',
+    className: 'w-[343px]',
     password: 'too',
   },
 };
 
 export const Weak: Story = {
   args: {
-    className: 'w-80',
+    className: 'w-[343px]',
     password: 'we4K',
   },
 };
 
 export const Medium: Story = {
   args: {
-    className: 'w-80',
+    className: 'w-[343px]',
     password: 'm3d!uUM',
   },
 };
 
 export const Strong: Story = {
   args: {
-    className: 'w-80',
+    className: 'w-[343px]',
     password: 'Str0n&&6!3sT',
   },
 };
