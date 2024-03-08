@@ -12,29 +12,29 @@ describe('checkPasswordStrength', () => {
   });
 
   describe('different strengths', () => {
-    it('returns "too weak" and a value of 1 when password has length of 3 and only one rule is applied', () => {
-      const { strength, value } = checkPasswordStrength('too');
+    it('returns "too weak" and a value of 1 when password has 8 repeated characters', () => {
+      const { strength, value } = checkPasswordStrength('aaaaaaaa');
 
       expect(strength).toBe(PasswordStrength.TOO_WEAK);
       expect(value).toBe(1);
     });
 
-    it('returns "weak" and a value of 2 when password has length of 6 and only one rule is applied', () => {
-      const { strength, value } = checkPasswordStrength('we4K');
+    it('returns "weak" and a value of 2 when password has length of 9 and has only letters', () => {
+      const { strength, value } = checkPasswordStrength('cRIqlZwirx');
 
       expect(strength).toBe(PasswordStrength.WEAK);
       expect(value).toBe(2);
     });
 
-    it('returns "medium" and a value of 3 when password has length of 9 and only two rules are applied', () => {
-      const { strength, value } = checkPasswordStrength('m3d!uUM');
+    it('returns "medium" and a value of 3 when password has length of 12 and has letters and numbers', () => {
+      const { strength, value } = checkPasswordStrength('fpjEtCW5Ls5E');
 
       expect(strength).toBe(PasswordStrength.MEDIUM);
       expect(value).toBe(3);
     });
 
-    it('returns "medium" and a value of 4 when password has length of 12 and all rules are applied', () => {
-      const { strength, value } = checkPasswordStrength('Str0n&&6!3sT');
+    it('returns "strong" and a value of 4 when password has length of 20 and has letters, numbers, and symbols', () => {
+      const { strength, value } = checkPasswordStrength('up&AEG}Lx3[Vn2;Mo&v');
 
       expect(strength).toBe(PasswordStrength.STRONG);
       expect(value).toBe(4);

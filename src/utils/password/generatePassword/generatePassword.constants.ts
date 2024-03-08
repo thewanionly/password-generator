@@ -22,7 +22,7 @@ export const CHARACTERS = {
   UPPERCASE_LETTERS: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   LOWERCASE_LETTERS: 'abcdefghijklmnopqrstuvwxyz',
   NUMBERS: '0123456789',
-  SYMBOLS: '!@#$%^&*()_+\\-=[]{};\'":\\\\|,.<>/?~',
+  SYMBOLS: '!@#$%^&*()-_=+`~[{]}\\|;:\'",<.>/?',
 };
 
 export const INVALID_INPUT_ERROR_MESSAGES = {

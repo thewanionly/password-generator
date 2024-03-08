@@ -29,27 +29,27 @@ export const Empty: Story = {
 export const TooWeak: Story = {
   args: {
     className: 'w-[343px]',
-    password: 'too',
+    password: 'aaaaaaaa',
   },
 };
 
 export const Weak: Story = {
   args: {
     className: 'w-[343px]',
-    password: 'we4K',
+    password: 'cRIqlZwirx',
   },
 };
 
 export const Medium: Story = {
   args: {
     className: 'w-[343px]',
-    password: 'm3d!uUM',
+    password: 'fpjEtCW5Ls5E',
   },
 };
 
 export const Strong: Story = {
   args: {
     className: 'w-[343px]',
-    password: 'Str0n&&6!3sT',
+    password: 'up&AEG}Lx3[Vn2;Mo&v',
   },
 };
